@@ -53,19 +53,19 @@ jobs:
             push: true
             tags: |
               snowdreamtech/go:entrypoint-latest
-              snowdreamtech/go:entrypoint-1.22.4
+              snowdreamtech/go:entrypoint-1.22.5
               snowdreamtech/go:entrypoint-1.22
               snowdreamtech/go:entrypoint-1
               ghcr.io/snowdreamtech/go:entrypoint-latest
-              ghcr.io/snowdreamtech/go:entrypoint-1.22.4
+              ghcr.io/snowdreamtech/go:entrypoint-1.22.5
               ghcr.io/snowdreamtech/go:entrypoint-1.22
               ghcr.io/snowdreamtech/go:entrypoint-1
               snowdreamtech/golang:entrypoint-latest
-              snowdreamtech/golang:entrypoint-1.22.4
+              snowdreamtech/golang:entrypoint-1.22.5
               snowdreamtech/golang:entrypoint-1.22
               snowdreamtech/golang:entrypoint-1
               ghcr.io/snowdreamtech/golang:entrypoint-latest
-              ghcr.io/snowdreamtech/golang:entrypoint-1.22.4
+              ghcr.io/snowdreamtech/golang:entrypoint-1.22.5
               ghcr.io/snowdreamtech/golang:entrypoint-1.22
               ghcr.io/snowdreamtech/golang:entrypoint-1
              
