@@ -66,19 +66,19 @@ jobs:
             push: true
             tags: |
               snowdreamtech/go:latest
-              snowdreamtech/go:1.22.5
+              snowdreamtech/go:1.22.6
               snowdreamtech/go:1.22
               snowdreamtech/go:1
               ghcr.io/snowdreamtech/go:latest
-              ghcr.io/snowdreamtech/go:1.22.5
+              ghcr.io/snowdreamtech/go:1.22.6
               ghcr.io/snowdreamtech/go:1.22
               ghcr.io/snowdreamtech/go:1
               snowdreamtech/golang:latest
-              snowdreamtech/golang:1.22.5
+              snowdreamtech/golang:1.22.6
               snowdreamtech/golang:1.22
               snowdreamtech/golang:1
               ghcr.io/snowdreamtech/golang:latest
-              ghcr.io/snowdreamtech/golang:1.22.5
+              ghcr.io/snowdreamtech/golang:1.22.6
               ghcr.io/snowdreamtech/golang:1.22
               ghcr.io/snowdreamtech/golang:1
              
