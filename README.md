@@ -7,13 +7,13 @@ Docker Image packaging for Go. (amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le,
 # Run
 
 ```bash
-docker run --rm snowdreamtech/go:entrypoint-latest
-docker run --rm snowdreamtech/golang:entrypoint-latest
+docker run --rm snowdreamtech/go:latest
+docker run --rm snowdreamtech/golang:latest
 ```
 
 ```bash
-docker run -e TZ=Asia/Shanghai --rm snowdreamtech/go:entrypoint-latest
-docker run -e TZ=Asia/Shanghai --rm snowdreamtech/golang:entrypoint-latest
+docker run -e TZ=Asia/Shanghai --rm snowdreamtech/go:latest
+docker run -e TZ=Asia/Shanghai --rm snowdreamtech/golang:latest
 ```
 
 # Development

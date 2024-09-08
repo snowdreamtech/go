@@ -3,7 +3,7 @@ name: GitHub Actions Continuous Delivery
 on:
   push:
     branches:
-      - entrypoint  
+      - main  
     tags:
       - '*'
   workflow_dispatch:
@@ -65,20 +65,20 @@ jobs:
             platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             push: true
             tags: |
-              snowdreamtech/go:entrypoint-latest
-              snowdreamtech/go:entrypoint-1.22.7
-              snowdreamtech/go:entrypoint-1.22
-              snowdreamtech/go:entrypoint-1
-              ghcr.io/snowdreamtech/go:entrypoint-latest
-              ghcr.io/snowdreamtech/go:entrypoint-1.22.7
-              ghcr.io/snowdreamtech/go:entrypoint-1.22
-              ghcr.io/snowdreamtech/go:entrypoint-1
-              snowdreamtech/golang:entrypoint-latest
-              snowdreamtech/golang:entrypoint-1.22.7
-              snowdreamtech/golang:entrypoint-1.22
-              snowdreamtech/golang:entrypoint-1
-              ghcr.io/snowdreamtech/golang:entrypoint-latest
-              ghcr.io/snowdreamtech/golang:entrypoint-1.22.7
-              ghcr.io/snowdreamtech/golang:entrypoint-1.22
-              ghcr.io/snowdreamtech/golang:entrypoint-1
+              snowdreamtech/go:latest
+              snowdreamtech/go:1.22.7
+              snowdreamtech/go:1.22
+              snowdreamtech/go:1
+              ghcr.io/snowdreamtech/go:latest
+              ghcr.io/snowdreamtech/go:1.22.7
+              ghcr.io/snowdreamtech/go:1.22
+              ghcr.io/snowdreamtech/go:1
+              snowdreamtech/golang:latest
+              snowdreamtech/golang:1.22.7
+              snowdreamtech/golang:1.22
+              snowdreamtech/golang:1
+              ghcr.io/snowdreamtech/golang:latest
+              ghcr.io/snowdreamtech/golang:1.22.7
+              ghcr.io/snowdreamtech/golang:1.22
+              ghcr.io/snowdreamtech/golang:1
              
