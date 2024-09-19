@@ -84,4 +84,5 @@ jobs:
               ghcr.io/snowdreamtech/golang:1.22.7
               ghcr.io/snowdreamtech/golang:1.22
               ghcr.io/snowdreamtech/golang:1
-             
+            cache-from: type=gha
+            cache-to: type=gha,mode=max             
