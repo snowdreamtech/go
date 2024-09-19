@@ -1,4 +1,4 @@
-FROM snowdreamtech/alpine:3.20.2
+FROM snowdreamtech/alpine:3.20.3
 
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
