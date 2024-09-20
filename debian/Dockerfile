@@ -3,7 +3,7 @@ FROM snowdreamtech/debian:12.7.0
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Go Image Based On Debian" \
-    org.opencontainers.image.description="Docker Images for Debian. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le,riscv64, s390x)" \
+    org.opencontainers.image.description="Docker Images for Go on Debian. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le,riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/go" \
     org.opencontainers.image.base.name="snowdreamtech/go:debian" \
     org.opencontainers.image.licenses="MIT" \
