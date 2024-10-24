@@ -9,13 +9,13 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
       org.opencontainers.image.vendor="Snowdream Tech" \
-      org.opencontainers.image.version="1.22.8" \
+      org.opencontainers.image.version="1.23.1" \
       org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
 ENV GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
     
-RUN apk add --no-cache go=1.22.8-r0
+RUN apk add --no-cache go@community=1.23.1-r0
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
