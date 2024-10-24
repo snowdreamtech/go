@@ -9,10 +9,10 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="1.23.1" \
+    org.opencontainers.image.version="1.23.2" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-ENV GOLANG_VERSION=1.23.1-3 \ 
+ENV GOLANG_VERSION=2:1.23~2 \ 
     GOROOT=/usr/lib/go-1.23 \
     PATH=$PATH:/usr/lib/go-1.23/bin \
     GO111MODULE=on \
