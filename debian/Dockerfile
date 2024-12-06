@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.version="1.19.8" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-ENV GOLANG_VERSION=2:1.19~1 \ 
+ENV GOLANG_VERSION=1.21.13-1~bpo12+1 \ 
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
@@ -21,7 +21,8 @@ ENV GOLANG_VERSION=2:1.19~1 \
 RUN set -eux \
     && apt-get -qqy update  \
     && apt-get -qqy install --no-install-recommends \ 
-    golang=${GOLANG_VERSION} \
+    -t bookworm-backports \
+    golang-1.21=${GOLANG_VERSION} \
     && apt-get -qqy --purge autoremove \
     && apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \
