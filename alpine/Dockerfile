@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.version="1.23.3" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-ENV GOLANG_VERSION=1.22.9-r0 \ 
+ENV GOLANG_VERSION=1.22.10-r0 \ 
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
