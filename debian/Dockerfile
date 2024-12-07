@@ -13,8 +13,8 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
 ENV GOLANG_VERSION=1.21.13-1~bpo12+1 \ 
-    GOROOT=/usr/lib/go \
-    PATH=$PATH:/usr/lib/go/bin \
+    GOROOT=/usr/lib/go-1.21 \
+    PATH=$PATH:/usr/lib/go-1.21/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 
