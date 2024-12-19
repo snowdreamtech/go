@@ -12,11 +12,29 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.version="1.19.8" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-    ENV GOLANG_VERSION=1.23.3-2~bpo12+1 \ 
+ENV GOLANG_VERSION=1.23.3-2~bpo12+1 \ 
     GOROOT=/usr/lib/go-1.23 \
     PATH=$PATH:/usr/lib/go-1.23/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
+
+ARG GID=1000 \
+    UID=1000  \
+    USER=go \
+    WORKDIR=/home/go
+
+# Create a user with UID and GID
+RUN set -eux \
+    &&if [ "${USER}" != "root" ]; then \
+    addgroup --gid ${GID} ${USER}; \
+    adduser --home /home/${USER} --uid ${UID} --gid ${GID} --gecos ${USER} --shell /bin/bash --disabled-password ${USER}; \
+    # sed -i "/%sudo/c ${USER} ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers; \
+    fi \
+    && apt-get -qqy --purge autoremove \
+    && apt-get -qqy clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/tmp/* 
 
 RUN set -eux \
     && apt-get -qqy update  \
@@ -28,6 +46,12 @@ RUN set -eux \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*
+
+# Switch to the user
+USER ${USER}
+
+# Set the workdir
+WORKDIR ${WORKDIR}
 
 COPY docker-entrypoint.sh /usr/local/bin/
 

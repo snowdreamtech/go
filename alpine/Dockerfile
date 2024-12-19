@@ -1,4 +1,4 @@
-FROM snowdreamtech/alpine:3.20.3
+FROM snowdreamtech/alpine:3.21.0
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
@@ -9,16 +9,34 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="1.23.3" \
+    org.opencontainers.image.version="1.23.4" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-ENV GOLANG_VERSION=1.22.10-r0 \ 
+ENV GOLANG_VERSION=1.23.4-r0 \ 
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 
+ARG GID=1000 \
+    UID=1000  \
+    USER=go \
+    WORKDIR=/home/go
+
+# Create a user with UID and GID
+RUN if [ "${USER}" != "root" ]; then \
+    addgroup -g ${GID} ${USER}; \
+    adduser -h /home/${USER} -u ${UID} -g ${USER} -G ${USER} -s /bin/sh -D ${USER}; \
+    # sed -i "/%sudo/c ${USER} ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers; \
+    fi
+
 RUN apk add --no-cache go=${GOLANG_VERSION}
+
+# Switch to the user
+USER ${USER}
+
+# Set the workdir
+WORKDIR ${WORKDIR}
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
