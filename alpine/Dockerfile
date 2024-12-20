@@ -2,23 +2,26 @@ FROM snowdreamtech/alpine:3.21.0
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Base Image Based On Alpine" \
-    org.opencontainers.image.description="Docker Images for Base on Alpine. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le,riscv64, s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/base" \
-    org.opencontainers.image.base.name="snowdreamtech/base:alpine" \
+    org.opencontainers.image.title="Go Image Based On Alpine" \
+    org.opencontainers.image.description="Docker Images for Go on Alpine. (i386, amd64, arm32v6, arm32v7, arm64, ppc64le,riscv64, s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/go" \
+    org.opencontainers.image.base.name="snowdreamtech/go:alpine" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/base" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="3.21.0" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/base"
+    org.opencontainers.image.version="1.23.4" \
+    org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-# keep the docker container running
-ENV KEEPALIVE=1
+ENV GOLANG_VERSION=1.23.4-r0 \ 
+    GOROOT=/usr/lib/go \
+    PATH=$PATH:/usr/lib/go/bin \
+    GO111MODULE=on \
+    GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 
 ARG GID=1000 \
     UID=1000  \
-    USER=base \
-    WORKDIR=/home/base
+    USER=go \
+    WORKDIR=/home/go
 
 # Create a user with UID and GID
 RUN if [ "${USER}" != "root" ]; then \
@@ -27,8 +30,7 @@ RUN if [ "${USER}" != "root" ]; then \
     # sed -i "/%sudo/c ${USER} ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers; \
     fi
 
-RUN apk add --no-cache \
-    vim
+RUN apk add --no-cache go=${GOLANG_VERSION}
 
 # Switch to the user
 USER ${USER}
