@@ -9,12 +9,12 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="1.22.11" \
+    org.opencontainers.image.version="1.23.5" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-ENV GOLANG_VERSION=1.22.11-1~bpo12+1 \ 
-    GOROOT=/usr/lib/go-1.22 \
-    PATH=$PATH:/usr/lib/go-1.22/bin \
+ENV GOLANG_VERSION=1.23.5-1~bpo12+1 \ 
+    GOROOT=/usr/lib/go-1.23 \
+    PATH=$PATH:/usr/lib/go-1.23/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 
@@ -40,7 +40,7 @@ RUN set -eux \
     && apt-get -qqy update  \
     && apt-get -qqy install --no-install-recommends \ 
     -t bookworm-backports \
-    golang-1.22=${GOLANG_VERSION} \
+    golang-1.23=${GOLANG_VERSION} \
     && apt-get -qqy --purge autoremove \
     && apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \
