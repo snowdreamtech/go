@@ -16,7 +16,7 @@ ENV GOLANG_VERSION=1.23.5-1~bpo12+1 \
     GOROOT=/usr/lib/go-1.23 \
     PATH=$PATH:/usr/lib/go-1.23/bin \
     GO111MODULE=on \
-    GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
+    GOPROXY=https://proxy.golang.org,direct
 
 ARG GID=1000 \
     UID=1000  \
