@@ -49,13 +49,6 @@ ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     PUID=${PUID}  \
     USER=${USER} \
     WORKDIR=${WORKDIR} 
-
-# Create a user with PUID and PGID
-RUN if [ "${USER}" != "root" ]; then \
-    addgroup --gid ${PGID} ${USER}; \
-    adduser --home /home/${USER} --uid ${PUID} --gid ${PGID} --gecos ${USER} --shell /bin/bash --disabled-password ${USER}; \
-    # sed -i "/%sudo/c ${USER} ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers; \
-    fi
     
 ENV GOLANG_VERSION=2:1.24~2 \ 
     GOROOT=/usr/lib/go \
@@ -64,6 +57,13 @@ ENV GOLANG_VERSION=2:1.24~2 \
     GOPROXY=https://proxy.golang.org,direct \
     GOSUMDB=sum.golang.org \
     CGO_ENABLED=0 
+
+# Create a user with PUID and PGID
+RUN if [ "${USER}" != "root" ]; then \
+    addgroup --gid ${PGID} ${USER}; \
+    adduser --home /home/${USER} --uid ${PUID} --gid ${PGID} --gecos ${USER} --shell /bin/bash --disabled-password ${USER}; \
+    # sed -i "/%sudo/c ${USER} ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers; \
+    fi
 
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy update  \
