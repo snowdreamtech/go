@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="1.24.9" \
+    org.opencontainers.image.version="1.24.10" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
     
@@ -49,7 +49,7 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR} 
 
-ENV GOLANG_VERSION=1.24.9-r0 \ 
+ENV GOLANG_VERSION=1.24.10-r0 \ 
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
