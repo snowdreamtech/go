@@ -1,4 +1,4 @@
-FROM snowdreamtech/alpine:3.22.2
+FROM snowdreamtech/alpine:3.23.2
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.version="1.24.11" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
 
-    
+
 # Switch to the user
 USER root
 
@@ -49,7 +49,7 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR} 
 
-ENV GOLANG_VERSION=1.24.11-r0 \ 
+ENV GOLANG_VERSION=1.25.8-r0 \ 
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
@@ -70,8 +70,8 @@ RUN apk update \
 
 # Enable CAP_NET_BIND_SERVICE
 # RUN if [ "${USER}" != "root" ] && [ "${CAP_NET_BIND_SERVICE}" -eq 1 ]; then \
-    # setcap 'cap_net_bind_service=+ep' `which nginx`; \
-    # fi
+# setcap 'cap_net_bind_service=+ep' `which nginx`; \
+# fi
 
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 
