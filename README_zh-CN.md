@@ -5,11 +5,11 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/go)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/go)
 
-Docker Go 模板，提供标准化的容器基础，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
+Go Docker 镜像打包。提供标准化的容器环境，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
 
 ## 概述
 
-Docker Go 模板作为构建容器化应用程序的基础起点。它提供：
+Docker Go 镜像作为构建容器化应用程序的基础起点。它提供：
 
 - **标准化的 Dockerfile**，包含 OCI 注释和最佳实践
 - **灵活的入口点系统**，支持自定义初始化脚本
@@ -233,7 +233,7 @@ Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 
 ## 入口点系统
 
-Go 模板包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
+Go 镜像包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
 
 ### 工作原理
 

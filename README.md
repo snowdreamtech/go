@@ -233,7 +233,7 @@ Docker automatically selects the appropriate architecture for your platform when
 
 ## Entrypoint System
 
-The Go template includes a flexible entrypoint system that executes custom initialization scripts before starting your application.
+The Go image includes a flexible entrypoint system that executes custom initialization scripts before starting your application.
 
 ### How It Works
 
