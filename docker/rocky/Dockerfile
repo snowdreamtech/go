@@ -44,7 +44,7 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-ENV GOLANG_VERSION=1.26.3-4.el10 \
+ENV GOLANG_VERSION=1.26.3-4.el10_2 \
     GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
