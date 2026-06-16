@@ -44,7 +44,8 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-ENV GOROOT=/usr/lib/go \
+ENV GOLANG_VERSION=1.26.3-4.el10 \
+    GOROOT=/usr/lib/go \
     PATH=$PATH:/usr/lib/go/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,direct \
@@ -55,7 +56,7 @@ ENV GOROOT=/usr/lib/go \
 RUN set -eux \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install \
-    golang \
+    golang-${GOLANG_VERSION} \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
