@@ -1,15 +1,15 @@
 # Base
 
-![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/base)
-![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/base/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/base)
-![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/base)
+![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/go)
+![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/go/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/go)
+![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/go)
 
-Docker 基础模板，提供标准化的容器基础，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
+Docker Go 模板，提供标准化的容器基础，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
 
 ## 概述
 
-Docker 基础模板作为构建容器化应用程序的基础起点。它提供：
+Docker Go 模板作为构建容器化应用程序的基础起点。它提供：
 
 - **标准化的 Dockerfile**，包含 OCI 注释和最佳实践
 - **灵活的入口点系统**，支持自定义初始化脚本
@@ -22,8 +22,8 @@ Docker 基础模板作为构建容器化应用程序的基础起点。它提供�
 
 ```bash
 # 拉取并运行默认的 Debian 变体
-docker pull snowdreamtech/base:debian
-docker run -d --name=base -e TZ=Asia/Shanghai snowdreamtech/base:debian
+docker pull snowdreamtech/go:debian
+docker run -d --name=go -e TZ=Asia/Shanghai snowdreamtech/go:debian
 
 # 或使用 docker-compose
 docker-compose up -d
@@ -37,10 +37,10 @@ docker-compose up -d
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
 **支持的架构**：i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x
@@ -53,10 +53,10 @@ docker run -d \
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:alpine
+  snowdreamtech/go:alpine
 ```
 
 **支持的架构**：i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x
@@ -69,10 +69,10 @@ docker run -d \
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:rocky
+  snowdreamtech/go:rocky
 ```
 
 **支持的架构**：i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x
@@ -85,13 +85,13 @@ docker run -d \
 
 ```bash
 # 构建 Debian 变体
-docker build -t snowdreamtech/base:debian ./docker/debian/
+docker build -t snowdreamtech/go:debian ./docker/debian/
 
 # 构建 Alpine 变体
-docker build -t snowdreamtech/base:alpine ./docker/alpine/
+docker build -t snowdreamtech/go:alpine ./docker/alpine/
 
 # 构建 Rocky 变体
-docker build -t snowdreamtech/base:rocky ./docker/rocky/
+docker build -t snowdreamtech/go:rocky ./docker/rocky/
 ```
 
 ### 多架构构建
@@ -105,21 +105,21 @@ docker buildx create --use --name build --node build --driver-opt network=host
 # 为多个架构构建 Debian
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/base:debian \
+  -t snowdreamtech/go:debian \
   ./docker/debian/ \
   --push
 
 # 为多个架构构建 Alpine
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
-  -t snowdreamtech/base:alpine \
+  -t snowdreamtech/go:alpine \
   ./docker/alpine/ \
   --push
 
 # 为多个架构构建 Rocky
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/base:rocky \
+  -t snowdreamtech/go:rocky \
   ./docker/rocky/ \
   --push
 ```
@@ -156,7 +156,7 @@ docker build \
   --build-arg PUID=1000 \
   --build-arg PGID=1000 \
   --build-arg USER=appuser \
-  -t snowdreamtech/base:debian-custom \
+  -t snowdreamtech/go:debian-custom \
   ./docker/debian/
 ```
 
@@ -164,11 +164,11 @@ docker build \
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e PUID=1000 \
   -e PGID=1000 \
   -e USER=appuser \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
 **注意**：仅当 `PUID≠0`、`PGID≠0` 且 `USER≠root` 时才会创建用户。
@@ -180,8 +180,8 @@ docker run -d \
 ```yaml
 services:
   base:
-    image: snowdreamtech/base:debian
-    container_name: base
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped
@@ -192,8 +192,8 @@ services:
 ```yaml
 services:
   base:
-    image: snowdreamtech/base:debian
-    container_name: base
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
       - DEBUG=true
@@ -209,14 +209,14 @@ services:
 
 示例：
 
-- `snowdreamtech/base:debian-13-v13.5.0`
-- `snowdreamtech/base:alpine-3-v3.24.0`
-- `snowdreamtech/base:rocky-10-v10.2.0`
+- `snowdreamtech/go:debian-1-v1.24.2`
+- `snowdreamtech/go:alpine-1-v1.26.3`
+- `snowdreamtech/go:rocky-1-v1.26.3`
 
 此格式允许：
 
 - **主版本固定**：`debian-13`（跟踪最新的 13.x.x）
-- **完整版本固定**：`debian-13-v13.5.0`（精确版本）
+- **完整版本固定**：`debian-1-v1.24.2`（精确版本）
 - **最新标签**：`debian` 或 `latest`（跟踪最新版本）
 
 ## 架构支持
@@ -233,7 +233,7 @@ Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 
 ## 入口点系统
 
-基础模板包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
+Go 模板包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
 
 ### 工作原理
 
@@ -247,7 +247,7 @@ Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 在派生的 Dockerfile 中创建自定义初始化脚本：
 
 ```dockerfile
-FROM snowdreamtech/base:debian
+FROM snowdreamtech/go:debian
 
 # 添加您的自定义初始化脚本
 COPY my-init.sh /usr/local/bin/entrypoint.d/20-my-init.sh
@@ -263,7 +263,7 @@ CMD ["/app/start.sh"]
 启用调试输出以排查入口点执行问题：
 
 ```bash
-docker run -e DEBUG=true snowdreamtech/base:debian
+docker run -e DEBUG=true snowdreamtech/go:debian
 ```
 
 输出示例：
@@ -288,24 +288,24 @@ docker run -e DEBUG=true snowdreamtech/base:debian
 make build
 
 # 构建特定变体
-docker build -t base:debian ./docker/debian/
-docker build -t base:alpine ./docker/alpine/
-docker build -t base:rocky ./docker/rocky/
+docker build -t go:debian ./docker/debian/
+docker build -t go:alpine ./docker/alpine/
+docker build -t go:rocky ./docker/rocky/
 ```
 
 ### 测试
 
 ```bash
 # 测试默认配置
-docker run --rm base:debian id
+docker run --rm go:debian id
 
 # 测试自定义用户创建
-docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t base:debian-test ./docker/debian/
-docker run --rm base:debian-test id
+docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t go:debian-test ./docker/debian/
+docker run --rm go:debian-test id
 # 预期输出：uid=1000(testuser) gid=1000(testuser)
 
 # 测试 DEBUG 模式
-docker run --rm -e DEBUG=true base:debian
+docker run --rm -e DEBUG=true go:debian
 ```
 
 ## 参考资料

@@ -1,9 +1,9 @@
 # Base
 
-![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/base)
-![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/base/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/base)
-![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/base)
+![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/go)
+![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/go/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/go)
+![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/go)
 
 Docker base template providing standardized container foundations with flexible entrypoint systems, multi-architecture support, and consistent configuration patterns across Alpine, Debian, and Rocky Linux distributions.
 
@@ -22,8 +22,8 @@ The Docker base template serves as a foundational starting point for building co
 
 ```bash
 # Pull and run the default Debian variant
-docker pull snowdreamtech/base:debian
-docker run -d --name=base -e TZ=Asia/Shanghai snowdreamtech/base:debian
+docker pull snowdreamtech/go:debian
+docker run -d --name=go -e TZ=Asia/Shanghai snowdreamtech/go:debian
 
 # Or use docker-compose
 docker-compose up -d
@@ -37,10 +37,10 @@ The recommended variant for most use cases, providing wide compatibility and ext
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
 **Supported Architectures**: i386, amd64, arm32v5, arm32v7, arm64, mips64le, ppc64le, s390x
@@ -53,10 +53,10 @@ Lightweight variant optimized for minimal image size and fast startup times.
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:alpine
+  snowdreamtech/go:alpine
 ```
 
 **Supported Architectures**: i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x
@@ -69,10 +69,10 @@ Enterprise-focused variant based on Rocky Linux, ideal for production environmen
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:rocky
+  snowdreamtech/go:rocky
 ```
 
 **Supported Architectures**: i386, amd64, arm32v5, arm32v7, arm64, mips64le, ppc64le, s390x
@@ -85,13 +85,13 @@ docker run -d \
 
 ```bash
 # Build Debian variant
-docker build -t snowdreamtech/base:debian ./docker/debian/
+docker build -t snowdreamtech/go:debian ./docker/debian/
 
 # Build Alpine variant
-docker build -t snowdreamtech/base:alpine ./docker/alpine/
+docker build -t snowdreamtech/go:alpine ./docker/alpine/
 
 # Build Rocky variant
-docker build -t snowdreamtech/base:rocky ./docker/rocky/
+docker build -t snowdreamtech/go:rocky ./docker/rocky/
 ```
 
 ### Multi-Architecture Build
@@ -105,21 +105,21 @@ docker buildx create --use --name build --node build --driver-opt network=host
 # Build Debian for multiple architectures
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/base:debian \
+  -t snowdreamtech/go:debian \
   ./docker/debian/ \
   --push
 
 # Build Alpine for multiple architectures
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
-  -t snowdreamtech/base:alpine \
+  -t snowdreamtech/go:alpine \
   ./docker/alpine/ \
   --push
 
 # Build Rocky for multiple architectures
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/base:rocky \
+  -t snowdreamtech/go:rocky \
   ./docker/rocky/ \
   --push
 ```
@@ -156,7 +156,7 @@ docker build \
   --build-arg PUID=1000 \
   --build-arg PGID=1000 \
   --build-arg USER=appuser \
-  -t snowdreamtech/base:debian-custom \
+  -t snowdreamtech/go:debian-custom \
   ./docker/debian/
 ```
 
@@ -164,11 +164,11 @@ Or at runtime (requires rebuilding the image):
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e PUID=1000 \
   -e PGID=1000 \
   -e USER=appuser \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
 **Note**: User creation only occurs when `PUID≠0`, `PGID≠0`, and `USER≠root`.
@@ -180,8 +180,8 @@ docker run -d \
 ```yaml
 services:
   base:
-    image: snowdreamtech/base:debian
-    container_name: base
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped
@@ -192,8 +192,8 @@ services:
 ```yaml
 services:
   base:
-    image: snowdreamtech/base:debian
-    container_name: base
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
       - DEBUG=true
@@ -209,14 +209,14 @@ Images follow semantic versioning with the format: `{major}-v{major}.{minor}.{pa
 
 Examples:
 
-- `snowdreamtech/base:debian-13-v13.5.0`
-- `snowdreamtech/base:alpine-3-v3.24.0`
-- `snowdreamtech/base:rocky-10-v10.2.0`
+- `snowdreamtech/go:debian-1-v1.24.2`
+- `snowdreamtech/go:alpine-1-v1.26.3`
+- `snowdreamtech/go:rocky-1-v1.26.3`
 
 This format allows:
 
 - **Major version pinning**: `debian-13` (tracks latest 13.x.x)
-- **Full version pinning**: `debian-13-v13.5.0` (exact version)
+- **Full version pinning**: `debian-1-v1.24.2` (exact version)
 - **Latest tag**: `debian` or `latest` (tracks most recent release)
 
 ## Architecture Support
@@ -233,7 +233,7 @@ Docker automatically selects the appropriate architecture for your platform when
 
 ## Entrypoint System
 
-The base template includes a flexible entrypoint system that executes custom initialization scripts before starting your application.
+The Go template includes a flexible entrypoint system that executes custom initialization scripts before starting your application.
 
 ### How It Works
 
@@ -247,7 +247,7 @@ The base template includes a flexible entrypoint system that executes custom ini
 Create custom initialization scripts in your derived Dockerfile:
 
 ```dockerfile
-FROM snowdreamtech/base:debian
+FROM snowdreamtech/go:debian
 
 # Add your custom initialization script
 COPY my-init.sh /usr/local/bin/entrypoint.d/20-my-init.sh
@@ -263,7 +263,7 @@ CMD ["/app/start.sh"]
 Enable debug output to troubleshoot entrypoint execution:
 
 ```bash
-docker run -e DEBUG=true snowdreamtech/base:debian
+docker run -e DEBUG=true snowdreamtech/go:debian
 ```
 
 Output example:
@@ -288,24 +288,24 @@ Output example:
 make build
 
 # Build specific variant
-docker build -t base:debian ./docker/debian/
-docker build -t base:alpine ./docker/alpine/
-docker build -t base:rocky ./docker/rocky/
+docker build -t go:debian ./docker/debian/
+docker build -t go:alpine ./docker/alpine/
+docker build -t go:rocky ./docker/rocky/
 ```
 
 ### Testing
 
 ```bash
 # Test default configuration
-docker run --rm base:debian id
+docker run --rm go:debian id
 
 # Test custom user creation
-docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t base:debian-test ./docker/debian/
-docker run --rm base:debian-test id
+docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t go:debian-test ./docker/debian/
+docker run --rm go:debian-test id
 # Expected: uid=1000(testuser) gid=1000(testuser)
 
 # Test DEBUG mode
-docker run --rm -e DEBUG=true base:debian
+docker run --rm -e DEBUG=true go:debian
 ```
 
 ## Reference
