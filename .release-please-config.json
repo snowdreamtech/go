@@ -33,7 +33,7 @@
       "release-type": "simple",
       "component": "rocky",
       "include-component-in-tag": true,
-      "release-as": "1.24.2",
+      "release-as": "1.26.3",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
