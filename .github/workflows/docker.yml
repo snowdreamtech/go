@@ -307,6 +307,9 @@ jobs:
             name=snowdreamtech/go,enable=true
             name=ghcr.io/snowdreamtech/go,enable=true
             name=quay.io/snowdreamtech/go,enable=true
+            name=snowdreamtech/golang,enable=true
+            name=ghcr.io/snowdreamtech/golang,enable=true
+            name=quay.io/snowdreamtech/golang,enable=true
           flavor: |
             latest=false
             prefix=
@@ -498,7 +501,7 @@ jobs:
           # Test images from each registry
           # DockerHub (no prefix)
           if [ "${{ steps.login-dockerhub.outcome }}" = "success" ]; then
-            dockerhub_tag=$(echo "${TAGS}" | grep -v '/' | head -n 1)
+            dockerhub_tag=$(echo "${TAGS}" | grep -v 'ghcr.io/' | grep -v 'quay.io/' | head -n 1)
             if [ -n "${dockerhub_tag}" ]; then
               echo "  Testing DockerHub: ${dockerhub_tag}"
               if retry_pull "${dockerhub_tag}"; then
