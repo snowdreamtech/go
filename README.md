@@ -20,6 +20,8 @@ The Docker base template serves as a foundational starting point for building co
 
 ## Quick Start
 
+> **Note**: This image is available under both `snowdreamtech/go` and `snowdreamtech/golang` names. They are completely equivalent and interchangeable. The examples below use `go`.
+
 ```bash
 # Pull and run the default Debian variant
 docker pull snowdreamtech/go:debian

@@ -20,6 +20,8 @@ Docker Go 镜像作为构建容器化应用程序的基础起点。它提供：
 
 ## 快速开始
 
+> **提示**：本镜像同时提供 `snowdreamtech/go` 和 `snowdreamtech/golang` 两个等价的镜像名，拉取时可互相替换。下文示例统一使用 `go`。
+
 ```bash
 # 拉取并运行默认的 Debian 变体
 docker pull snowdreamtech/go:debian
