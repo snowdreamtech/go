@@ -1,15 +1,15 @@
-# Base
+# Go
 
 ![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/go)
 ![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/go/latest)
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/go)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/go)
 
-Docker base template providing standardized container foundations with flexible entrypoint systems, multi-architecture support, and consistent configuration patterns across Alpine, Debian, and Rocky Linux distributions.
+Docker Go image providing standardized container foundations with flexible entrypoint systems, multi-architecture support, and consistent configuration patterns across Alpine, Debian, and Rocky Linux distributions.
 
 ## Overview
 
-The Docker base template serves as a foundational starting point for building containerized applications. It provides:
+The Docker Go image serves as a foundational starting point for building containerized applications. It provides:
 
 - **Standardized Dockerfiles** with OCI annotations and best practices
 - **Flexible entrypoint system** supporting custom initialization scripts
@@ -181,7 +181,7 @@ docker run -d \
 
 ```yaml
 services:
-  base:
+  go:
     image: snowdreamtech/go:debian
     container_name: go
     environment:
@@ -193,7 +193,7 @@ services:
 
 ```yaml
 services:
-  base:
+  go:
     image: snowdreamtech/go:debian
     container_name: go
     environment:
@@ -319,7 +319,7 @@ docker run --rm -e DEBUG=true go:debian
 5. [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
 6. [docker/buildx](https://github.com/docker/buildx)
 
-## Contact (备注：base)
+## Contact (备注：go)
 
 * Email: <sn0wdr1am@qq.com>
 * QQ: 3217680847
