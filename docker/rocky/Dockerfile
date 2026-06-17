@@ -45,8 +45,8 @@ ENV KEEPALIVE=${KEEPALIVE} \
     WORKDIR=${WORKDIR}
 
 ENV GOLANG_VERSION=1.26.3-4.el10_2 \
-    GOROOT=/usr/lib/go \
-    PATH=$PATH:/usr/lib/go/bin \
+    GOROOT=/usr/lib/golang \
+    PATH=$PATH:/usr/lib/golang/bin \
     GO111MODULE=on \
     GOPROXY=https://proxy.golang.org,direct \
     GOSUMDB=sum.golang.org \
