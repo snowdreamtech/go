@@ -18,7 +18,7 @@ RUN set -eux; \
 			export GOOS='linux' GOARCH='amd64' GOAMD64='v1'; \
 			;; \
 		'aarch64') \
-			export GOOS='linux' GOARCH='arm64'; \
+			export GOOS='linux' GOARCH='arm64' GOARM64='v8.0'; \
 			;; \
 		'ppc64le') \
 			export GOOS='linux' GOARCH='ppc64le'; \

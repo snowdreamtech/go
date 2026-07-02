@@ -28,7 +28,7 @@ RUN set -eux; \
 			export GOOS='linux' GOARCH='arm' GOARM='7'; \
 			;; \
 		'aarch64') \
-			export GOOS='linux' GOARCH='arm64'; \
+			export GOOS='linux' GOARCH='arm64' GOARM64='v8.0'; \
 			;; \
 		'x86') \
 			export GOOS='linux' GOARCH='386' GO386='softfloat'; \
