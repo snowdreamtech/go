@@ -6,6 +6,7 @@ FROM ghcr.io/snowdreamtech/build-essential:10.2.0-rocky AS build
 ENV PATH=/usr/local/go/bin:$PATH
 COPY --from=golang:bookworm /usr/local/go /usr/local/goroot-bootstrap
 
+ARG VERSION
 ARG GOLANG_COMMIT=master
 ENV GOLANG_COMMIT=$GOLANG_COMMIT
 
@@ -32,7 +33,11 @@ RUN set -eux; \
 	"$GOROOT_BOOTSTRAP/bin/go" version; \
 	\
 	git init --quiet /usr/local/go; \
-	git -C /usr/local/go fetch --depth 1 https://github.com/golang/go.git "$GOLANG_COMMIT:"; \
+	fetch_commit="$GOLANG_COMMIT"; \
+	if [ -n "${VERSION:-}" ] && [ "${VERSION}" != "latest" ] && [ "${VERSION}" != "nightly" ] && [ "${VERSION}" != "dev" ]; then \
+		fetch_commit="go${VERSION}"; \
+	fi; \
+	git -C /usr/local/go fetch --depth 1 https://github.com/golang/go.git "$fetch_commit:"; \
 	git -C /usr/local/go checkout --quiet FETCH_HEAD; \
 	\
 	SOURCE_DATE_EPOCH="$(git -C /usr/local/go log -1 --format='format:%ct' HEAD)"; \
