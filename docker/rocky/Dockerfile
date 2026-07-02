@@ -1,7 +1,7 @@
 # Go Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
-FROM ghcr.io/snowdreamtech/rocky:10.2.0
+FROM ghcr.io/snowdreamtech/build-essential:10.2.0-rocky
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -44,24 +44,83 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-ENV GOLANG_VERSION=1.26.3-4.el10_2 \
-    GOROOT=/usr/lib/golang \
-    PATH=$PATH:/usr/lib/golang/bin \
-    GO111MODULE=on \
-    GOPROXY=https://proxy.golang.org,direct \
-    GOSUMDB=sum.golang.org \
-    CGO_ENABLED=0
+ENV GOTOOLCHAIN=local \
+    GOPATH=/go
+ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-# Additional tooling and configuration for Go image
-RUN set -eux \
-    && dnf -y --allowerasing update \
-    && dnf -y --allowerasing install \
-    golang-${GOLANG_VERSION} \
-    && dnf -y --allowerasing autoremove \
-    && dnf -y --allowerasing clean all \
-    && rm -rf /var/cache/dnf \
-    && rm -rf /tmp/* \
-    && rm -rf /var/tmp/*
+COPY --from=golang:bookworm /usr/local/go /usr/local/goroot-bootstrap
+
+ARG GOLANG_COMMIT=master
+ENV GOLANG_COMMIT=$GOLANG_COMMIT
+
+RUN set -eux; \
+	now="$(date '+%s')"; \
+	arch="$(uname -m)"; \
+	case "$arch" in \
+		'x86_64') \
+			export GOOS='linux' GOARCH='amd64' GOAMD64='v1'; \
+			;; \
+		'aarch64') \
+			export GOOS='linux' GOARCH='arm64'; \
+			;; \
+		'ppc64le') \
+			export GOOS='linux' GOARCH='ppc64le'; \
+			;; \
+		's390x') \
+			export GOOS='linux' GOARCH='s390x'; \
+			;; \
+		*) echo >&2 "error: unsupported architecture '$arch' (likely packaging update needed)"; exit 1 ;; \
+	esac; \
+	\
+	export GOROOT_BOOTSTRAP=/usr/local/goroot-bootstrap; \
+	"$GOROOT_BOOTSTRAP/bin/go" version; \
+	\
+	git init --quiet /usr/local/go; \
+	git -C /usr/local/go fetch --depth 1 https://github.com/golang/go.git "$GOLANG_COMMIT:"; \
+	git -C /usr/local/go checkout --quiet FETCH_HEAD; \
+	\
+	SOURCE_DATE_EPOCH="$(git -C /usr/local/go log -1 --format='format:%ct' HEAD)"; \
+	export SOURCE_DATE_EPOCH; \
+	touchy="$(date -d "@$SOURCE_DATE_EPOCH" '+%Y%m%d%H%M.%S')"; \
+	date --date "@$SOURCE_DATE_EPOCH" --rfc-2822; \
+	[ "$SOURCE_DATE_EPOCH" -lt "$now" ]; \
+	\
+	( \
+		export \
+			GOCACHE='/tmp/gocache' \
+			GOHOSTOS="$GOOS" \
+			GOHOSTARCH="$GOARCH" \
+		; \
+		\
+		cd /usr/local/go/src; \
+		./make.bash; \
+		\
+		rm -rf \
+			/usr/local/go/.git* \
+			/usr/local/go/pkg/*/cmd \
+			/usr/local/go/pkg/bootstrap \
+			/usr/local/go/pkg/obj \
+			/usr/local/go/pkg/tool/*/api \
+			/usr/local/go/pkg/tool/*/go_bootstrap \
+			/usr/local/go/src/cmd/dist/dist \
+			"$GOCACHE" \
+		; \
+		\
+		touch -t "$touchy" /usr/local/.go-date-stamp; \
+		find /usr/local/go -depth -newer /usr/local/.go-date-stamp -exec touch -ht "$touchy" '{}' +; \
+		rm /usr/local/.go-date-stamp; \
+	); \
+	\
+	mkdir /target /target/usr /target/usr/local; \
+	mv -vT /usr/local/go /target/usr/local/go; \
+	ln -svfT /target/usr/local/go /usr/local/go; \
+	touch -t "$touchy" /target/usr/local /target/usr /target; \
+	\
+	go version; \
+	epoch="$(stat -c '%Y' /target/usr/local/go)"; \
+	[ "$SOURCE_DATE_EPOCH" = "$epoch" ]; \
+	find /target -newer /target/usr/local/go -exec sh -c 'ls -ld "$@" && exit "$#"' -- '{}' +; \
+	rm -rf /usr/local/goroot-bootstrap
 
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
@@ -73,6 +132,6 @@ HEALTHCHECK NONE
 
 # Process Execution
 USER root
-WORKDIR /root
+WORKDIR $GOPATH
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]
