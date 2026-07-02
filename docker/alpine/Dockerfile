@@ -162,7 +162,7 @@ ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 # install cgo-related dependencies
 RUN set -eux; \
-    apk add --no-cache gcc g++ musl-dev make
+    apk add --no-cache ca-certificates gcc g++ musl-dev make pkgconf
 
 COPY --from=build --link /target/ /
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"

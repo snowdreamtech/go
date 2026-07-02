@@ -132,7 +132,7 @@ ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 # install cgo-related dependencies
 RUN set -eux; \
-    dnf install -y gcc gcc-c++ make glibc-devel; \
+    dnf install -y ca-certificates gcc gcc-c++ make glibc-devel pkgconfig; \
     dnf clean all; \
     rm -rf /var/cache/dnf
 
