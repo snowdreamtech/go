@@ -170,6 +170,28 @@ ENV GOTOOLCHAIN=local \
     GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
+# install cgo-related dependencies
+RUN set -eux; \
+	DEBIAN_FRONTEND=noninteractive apt-get update; \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+		g++ \
+		gcc \
+		libc6-dev \
+		make \
+		pkg-config \
+	; \
+# go depends on "gold" explicitly on arm64
+# https://github.com/docker-library/golang/issues/570 (go depends on "gold" explicitly on arm64)
+# https://github.com/golang/go/issues/22040
+# ... and as of trixie, "gold" is removed from the "binutils" package:
+# > WARNING: gold is being removed from binutils, and is deprecated upstream.
+# (and available as "binutils-gold" which is also a virtual on bookworm so we can reasonably be explicit everywhere)
+	dpkgArch="$(dpkg --print-architecture)"; \
+	if [ "$dpkgArch" = 'arm64' ]; then \
+		DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends binutils-gold; \
+	fi; \
+	rm -rf /var/lib/apt/lists/*
+
 COPY --from=build --link /target/ /
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
 
