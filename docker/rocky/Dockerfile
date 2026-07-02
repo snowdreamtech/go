@@ -4,7 +4,7 @@
 FROM ghcr.io/snowdreamtech/build-essential:10.2.0-rocky AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
-COPY --from=golang:bookworm /usr/local/go /usr/local/goroot-bootstrap
+COPY --from=golang:trixie /usr/local/go /usr/local/goroot-bootstrap
 
 ARG VERSION
 ARG GOLANG_COMMIT=master
