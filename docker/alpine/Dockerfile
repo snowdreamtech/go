@@ -83,18 +83,7 @@ RUN set -eux; \
 		rm /usr/local/.go-date-stamp; \
 	); \
 	\
-	if [ "$arch" = 'armv7' ]; then \
-		[ -s /usr/local/go/go.env ]; \
-		before="$(go env GOARM)"; [ "$before" != '7' ]; \
-		{ \
-			echo; \
-			echo '# https://github.com/docker-library/golang/issues/494'; \
-			echo 'GOARM=7'; \
-		} >> /usr/local/go/go.env; \
-		after="$(go env GOARM)"; [ "$after" = '7' ]; \
-		touch -t "$touchy" /usr/local/go/go.env /usr/local/go; \
-	fi; \
-	\
+
 	mkdir /target /target/usr /target/usr/local; \
 	mv -vT /usr/local/go /target/usr/local/go; \
 	ln -svfT /target/usr/local/go /usr/local/go; \
