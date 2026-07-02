@@ -4,7 +4,7 @@
 FROM ghcr.io/snowdreamtech/build-essential:13.5.0-debian AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
-COPY --from=golang:bookworm /usr/local/go /usr/local/goroot-bootstrap
+COPY --from=golang:trixie /usr/local/go /usr/local/goroot-bootstrap
 
 ARG VERSION
 ARG GOLANG_COMMIT=master
@@ -32,9 +32,6 @@ RUN set -eux; \
 	case "$arch" in \
 		'amd64') \
 			export GOOS='linux' GOARCH='amd64' GOAMD64='v1'; \
-			;; \
-		'armel') \
-			export GOOS='linux' GOARCH='arm' GOARM='5'; \
 			;; \
 		'armhf') \
 			export GOOS='linux' GOARCH='arm' GOARM='7'; \
@@ -136,7 +133,7 @@ ARG BUILDTIME \
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="Go Image Based On Debian" \
-    org.opencontainers.image.description="Docker Images for Go on Debian. (i386, amd64, arm32v5, arm32v7, arm64, ppc64le, riscv64, s390x)" \
+    org.opencontainers.image.description="Docker Images for Go on Debian. (i386, amd64, arm32v7, arm64, ppc64le, riscv64, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/go" \
     org.opencontainers.image.base.name="snowdreamtech/go:debian" \
     org.opencontainers.image.licenses="MIT" \
