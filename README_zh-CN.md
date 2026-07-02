@@ -45,7 +45,7 @@ docker run -d \
   snowdreamtech/go:debian
 ```
 
-**支持的架构**：i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x
+**支持的架构**：i386、amd64、arm32v5、arm32v7、arm64、ppc64le、riscv64、s390x
 
 **基础镜像**：`snowdreamtech/debian:13.5.0`
 
@@ -77,7 +77,7 @@ docker run -d \
   snowdreamtech/go:rocky
 ```
 
-**支持的架构**：i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x
+**支持的架构**：amd64、arm64、ppc64le、s390x
 
 **基础镜像**：`snowdreamtech/rocky:10.2.0`
 
@@ -106,7 +106,7 @@ docker buildx create --use --name build --node build --driver-opt network=host
 
 # 为多个架构构建 Debian
 docker buildx build \
-  --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
+  --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
   -t snowdreamtech/go:debian \
   ./docker/debian/ \
   --push
@@ -120,7 +120,7 @@ docker buildx build \
 
 # 为多个架构构建 Rocky
 docker buildx build \
-  --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/mips64le,linux/ppc64le,linux/s390x \
+  --platform=linux/amd64,linux/arm64,linux/ppc64le,linux/s390x \
   -t snowdreamtech/go:rocky \
   ./docker/rocky/ \
   --push
@@ -227,9 +227,9 @@ services:
 
 | 变体 | 架构 |
 |---------|---------------|
-| **Debian** | i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x |
+| **Debian** | i386、amd64、arm32v5、arm32v7、arm64、ppc64le、riscv64、s390x |
 | **Alpine** | i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x |
-| **Rocky** | i386、amd64、arm32v5、arm32v7、arm64、mips64le、ppc64le、s390x |
+| **Rocky** | amd64、arm64、ppc64le、s390x |
 
 Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 
