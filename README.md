@@ -45,7 +45,7 @@ docker run -d \
   snowdreamtech/go:debian
 ```
 
-**Supported Architectures**: i386, amd64, arm32v5, arm32v7, arm64, ppc64le, riscv64, s390x
+**Supported Architectures**: i386, amd64, arm32v7, arm64, ppc64le, riscv64, s390x
 
 **Base Image**: `snowdreamtech/debian:13.5.0`
 
@@ -106,7 +106,7 @@ docker buildx create --use --name build --node build --driver-opt network=host
 
 # Build Debian for multiple architectures
 docker buildx build \
-  --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
+  --platform=linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x \
   -t snowdreamtech/go:debian \
   ./docker/debian/ \
   --push
@@ -227,7 +227,7 @@ Each distribution variant supports multiple CPU architectures for deployment acr
 
 | Variant | Architectures |
 |---------|---------------|
-| **Debian** | i386, amd64, arm32v5, arm32v7, arm64, ppc64le, riscv64, s390x |
+| **Debian** | i386, amd64, arm32v7, arm64, ppc64le, riscv64, s390x |
 | **Alpine** | i386, amd64, arm32v6, arm32v7, arm64, ppc64le, riscv64, s390x |
 | **Rocky** | amd64, arm64, ppc64le, s390x |
 
