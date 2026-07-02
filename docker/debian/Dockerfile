@@ -167,6 +167,8 @@ RUN set -eux; \
 	find /target -newer /target/usr/local/go -exec sh -c 'ls -ld "$@" && exit "$#"' -- '{}' +; \
 	rm -rf /usr/local/goroot-bootstrap
 
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
+
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 
