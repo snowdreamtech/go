@@ -1,53 +1,9 @@
 # Go Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
-FROM ghcr.io/snowdreamtech/build-essential:10.2.0-rocky
+FROM ghcr.io/snowdreamtech/build-essential:10.2.0-rocky AS build
 
-# Build-time Configuration
-ARG BUILDTIME \
-    VERSION \
-    REVISION \
-    KEEPALIVE=0 \
-    CAP_NET_BIND_SERVICE=0 \
-    LANG=C.UTF-8 \
-    UMASK=022 \
-    DEBUG=false \
-    PASSWORDLESS_SUDO=false \
-    PGID=0 \
-    PUID=0 \
-    USER=root \
-    WORKDIR=/root
-
-# Standard OCI Metadata (https://github.com/opencontainers/image-spec)
-LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Go Image Based On Rocky" \
-    org.opencontainers.image.description="Docker Images for Go on Rocky. (i386, amd64, arm32v5, arm32v7, arm64, mips64le, ppc64le, s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/go" \
-    org.opencontainers.image.base.name="snowdreamtech/go:rocky" \
-    org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
-    org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="${VERSION:-1.26.3}" \
-    org.opencontainers.image.created="${BUILDTIME}" \
-    org.opencontainers.image.revision="${REVISION}" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/go"
-
-# Runtime Environment Configuration
-ENV KEEPALIVE=${KEEPALIVE} \
-    CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
-    LANG=${LANG} \
-    UMASK=${UMASK} \
-    DEBUG=${DEBUG} \
-    PASSWORDLESS_SUDO=${PASSWORDLESS_SUDO} \
-    PGID=${PGID} \
-    PUID=${PUID} \
-    USER=${USER} \
-    WORKDIR=${WORKDIR}
-
-ENV GOTOOLCHAIN=local \
-    GOPATH=/go
-ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
-
+ENV PATH=/usr/local/go/bin:$PATH
 COPY --from=golang:bookworm /usr/local/go /usr/local/goroot-bootstrap
 
 ARG GOLANG_COMMIT=master
@@ -122,6 +78,54 @@ RUN set -eux; \
 	find /target -newer /target/usr/local/go -exec sh -c 'ls -ld "$@" && exit "$#"' -- '{}' +; \
 	rm -rf /usr/local/goroot-bootstrap
 
+FROM ghcr.io/snowdreamtech/rocky:10.2.0
+
+# Build-time Configuration
+ARG BUILDTIME \
+    VERSION \
+    REVISION \
+    KEEPALIVE=0 \
+    CAP_NET_BIND_SERVICE=0 \
+    LANG=C.UTF-8 \
+    UMASK=022 \
+    DEBUG=false \
+    PASSWORDLESS_SUDO=false \
+    PGID=0 \
+    PUID=0 \
+    USER=root \
+    WORKDIR=/root
+
+# Standard OCI Metadata (https://github.com/opencontainers/image-spec)
+LABEL org.opencontainers.image.authors="Snowdream Tech" \
+    org.opencontainers.image.title="Go Image Based On Rocky" \
+    org.opencontainers.image.description="Docker Images for Go on Rocky. (i386, amd64, arm32v5, arm32v7, arm64, mips64le, ppc64le, s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/go" \
+    org.opencontainers.image.base.name="snowdreamtech/go:rocky" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
+    org.opencontainers.image.vendor="Snowdream Tech" \
+    org.opencontainers.image.version="${VERSION:-1.26.3}" \
+    org.opencontainers.image.created="${BUILDTIME}" \
+    org.opencontainers.image.revision="${REVISION}" \
+    org.opencontainers.image.url="https://github.com/snowdreamtech/go"
+
+# Runtime Environment Configuration
+ENV KEEPALIVE=${KEEPALIVE} \
+    CAP_NET_BIND_SERVICE=${CAP_NET_BIND_SERVICE} \
+    LANG=${LANG} \
+    UMASK=${UMASK} \
+    DEBUG=${DEBUG} \
+    PASSWORDLESS_SUDO=${PASSWORDLESS_SUDO} \
+    PGID=${PGID} \
+    PUID=${PUID} \
+    USER=${USER} \
+    WORKDIR=${WORKDIR}
+
+ENV GOTOOLCHAIN=local \
+    GOPATH=/go
+ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+
+COPY --from=build --link /target/ /
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
 
 # Container Orchestration Files
