@@ -135,8 +135,13 @@ ENV GOLANG_VERSION=${VERSION} \
     CGO_ENABLED=0
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-# install cgo-related dependencies
+# Use the official Rocky baseurl so CI egress allowlists do not depend on
+# third-party mirrors returned by the dynamic mirrorlist.
 RUN set -eux; \
+    for repo_file in /etc/yum.repos.d/*.repo; do \
+        [ -f "$repo_file" ] || continue; \
+        sed -ri "s!^(mirrorlist|metalink)=!#&!g; s!^#baseurl=http://dl\\.rockylinux\\.org/\\\$contentdir/!baseurl=https://dl.rockylinux.org/pub/rocky/!g" "$repo_file"; \
+    done; \
     dnf install -y ca-certificates gcc gcc-c++ make glibc-devel pkgconfig; \
     dnf clean all; \
     rm -rf /var/cache/dnf
