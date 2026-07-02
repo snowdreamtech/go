@@ -125,6 +125,12 @@ ENV GOTOOLCHAIN=local \
     GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
+# install cgo-related dependencies
+RUN set -eux; \
+    dnf install -y gcc gcc-c++ make glibc-devel; \
+    dnf clean all; \
+    rm -rf /var/cache/dnf
+
 COPY --from=build --link /target/ /
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 1777 "$GOPATH"
 
