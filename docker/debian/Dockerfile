@@ -166,8 +166,13 @@ ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-ENV GOTOOLCHAIN=local \
-    GOPATH=/go
+ENV GOLANG_VERSION=${VERSION} \
+    GOTOOLCHAIN=local \
+    GOPATH=/go \
+    GO111MODULE=on \
+    GOPROXY=https://proxy.golang.org,direct \
+    GOSUMDB=sum.golang.org \
+    CGO_ENABLED=0
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 # install cgo-related dependencies
