@@ -213,7 +213,7 @@ Examples:
 
 - `snowdreamtech/go:1.26.4-debian`
 - `snowdreamtech/go:1.26.3-alpine`
-- `snowdreamtech/go:1.26.3-rocky`
+- `snowdreamtech/go:1.26.4-rocky`
 
 This format allows:
 
