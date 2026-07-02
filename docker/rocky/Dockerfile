@@ -34,7 +34,7 @@ RUN set -eux; \
 	\
 	git init --quiet /usr/local/go; \
 	fetch_commit="$GOLANG_COMMIT"; \
-	if [ -n "${VERSION:-}" ] && [ "${VERSION}" != "latest" ] && [ "${VERSION}" != "nightly" ] && [ "${VERSION}" != "dev" ]; then \
+	if [ -n "${VERSION:-}" ] && echo "${VERSION}" | grep -Eq '^[0-9]'; then \
 		fetch_commit="go${VERSION}"; \
 	fi; \
 	git -C /usr/local/go fetch --depth 1 https://github.com/golang/go.git "$fetch_commit:"; \
