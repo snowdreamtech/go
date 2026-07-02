@@ -211,13 +211,13 @@ services:
 
 示例：
 
-- `snowdreamtech/go:1.24.2-debian`
 - `snowdreamtech/go:1.26.3-alpine`
+- `snowdreamtech/go:1.26.3-debian`
 - `snowdreamtech/go:1.26.3-rocky`
 
 此格式允许：
 
-- **完整版本固定**：`1.24.2-debian`（精确版本）
+- **完整版本固定**：`1.26.3-alpine`, `1.26.3-debian`, `1.26.3-rocky`（精确版本）
 - **变体最新标签**：`latest-debian`（跟踪 Debian 最新版本）
 - **全局最新标签**：`latest`（跟踪最新版本，默认指向 Debian）
 
