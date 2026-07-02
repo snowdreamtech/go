@@ -37,7 +37,7 @@ RUN set -eux; \
 			export GOOS='linux' GOARCH='ppc64le'; \
 			;; \
 		'riscv64') \
-			export GOOS='linux' GOARCH='riscv64'; \
+			export GOOS='linux' GOARCH='riscv64' GORISCV64='rva20u64'; \
 			;; \
 		's390x') \
 			export GOOS='linux' GOARCH='s390x'; \
