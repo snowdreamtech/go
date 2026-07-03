@@ -50,10 +50,10 @@ unirtm install node@25.9.0
 unirtm install python@3.14.3
 
 # 安装 Go
-unirtm install go@1.26.3
+unirtm install go@1.26.4
 
 # 激活工具
-unirtm use node@25.9.0 python@3.14.3 go@1.26.3
+unirtm use node@25.9.0 python@3.14.3 go@1.26.4
 ```
 
 ## 完整 Dockerfile 示例
