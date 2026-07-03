@@ -3,6 +3,13 @@
 ## [1.26.3](https://github.com/snowdreamtech/go/compare/rocky-v1.26.3...rocky-v1.26.3) (2026-07-03)
 
 
+### ♻️ Miscellaneous Chores
+
+* add 0-git-keep.sh to prevent empty entrypoint.d directories ([61ec010](https://github.com/snowdreamtech/go/commit/61ec010538763d931e2e1731222359d585f8527d))
+
+## [1.26.3](https://github.com/snowdreamtech/go/compare/rocky-v1.26.3...rocky-v1.26.3) (2026-07-03)
+
+
 ### 🚀 Features
 
 * add CGO-related dependencies to final Alpine and Rocky images ([154bfa9](https://github.com/snowdreamtech/go/commit/154bfa9285264d1276d687cd8fe40446b9370b77))
@@ -56,4 +63,3 @@
 * **release:** implement automatic changelog deduplication step ([282c220](https://github.com/snowdreamtech/go/commit/282c22081e1ad7a1a010a7f297d20bc7c9b416a7))
 * remove 10-base-init.sh from docker entrypoint variants ([ae1ce6a](https://github.com/snowdreamtech/go/commit/ae1ce6ad7c0937f41b77016e5c254e206dbfe545))
 * **speckit:** manual auto-commit trigger ([2512495](https://github.com/snowdreamtech/go/commit/2512495cc6e6af0044e0aaf789c58a871a286009))
-

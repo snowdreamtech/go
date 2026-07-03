@@ -3,6 +3,13 @@
 ## [1.26.3](https://github.com/snowdreamtech/go/compare/alpine-v1.26.3...alpine-v1.26.3) (2026-07-03)
 
 
+### ♻️ Miscellaneous Chores
+
+* add 0-git-keep.sh to prevent empty entrypoint.d directories ([61ec010](https://github.com/snowdreamtech/go/commit/61ec010538763d931e2e1731222359d585f8527d))
+
+## [1.26.3](https://github.com/snowdreamtech/go/compare/alpine-v1.26.3...alpine-v1.26.3) (2026-07-03)
+
+
 ### 🚀 Features
 
 * add CGO-related dependencies to final Alpine and Rocky images ([154bfa9](https://github.com/snowdreamtech/go/commit/154bfa9285264d1276d687cd8fe40446b9370b77))
@@ -71,4 +78,3 @@
 * remove 10-base-init.sh from docker entrypoint variants ([ae1ce6a](https://github.com/snowdreamtech/go/commit/ae1ce6ad7c0937f41b77016e5c254e206dbfe545))
 * reset release configs and changelogs for go repository ([bad2d2b](https://github.com/snowdreamtech/go/commit/bad2d2bc6013d776adba368b1cd442664fdffd52))
 * synchronize Go versions with actual distribution packages ([c45ce0b](https://github.com/snowdreamtech/go/commit/c45ce0bf63f15c5e51e4d7253290ccc1f3f78d50))
-
