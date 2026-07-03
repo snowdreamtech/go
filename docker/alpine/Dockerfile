@@ -6,7 +6,9 @@ FROM ghcr.io/snowdreamtech/build-essential:3.24.0-alpine AS build
 ENV PATH=/usr/local/go/bin:$PATH
 COPY --from=golang:alpine /usr/local/go /usr/local/goroot-bootstrap
 
-ARG VERSION
+# x-release-please-start-version
+ARG GOLANG_VERSION="1.26.3"
+# x-release-please-end
 ARG GOLANG_COMMIT=master
 ENV GOLANG_COMMIT=$GOLANG_COMMIT
 
@@ -50,8 +52,8 @@ RUN set -eux; \
 	\
 	git init --quiet /usr/local/go; \
 	fetch_commit="$GOLANG_COMMIT"; \
-	if [ -n "${VERSION:-}" ] && echo "${VERSION}" | grep -Eq '^[0-9]'; then \
-		fetch_commit="go${VERSION}"; \
+	if [ -n "${GOLANG_VERSION:-}" ] && echo "${GOLANG_VERSION}" | grep -Eq '^[0-9]'; then \
+		fetch_commit="go${GOLANG_VERSION}"; \
 	fi; \
 	git -C /usr/local/go fetch --depth 1 https://github.com/golang/go.git "$fetch_commit:"; \
 	git -C /usr/local/go checkout --quiet FETCH_HEAD; \
@@ -105,8 +107,10 @@ RUN set -eux; \
 FROM ghcr.io/snowdreamtech/alpine:3.24.0
 
 # Build-time Configuration
+# x-release-please-start-version
+ARG GOLANG_VERSION="1.26.3"
+# x-release-please-end
 ARG BUILDTIME \
-    VERSION \
     REVISION \
     KEEPALIVE=0 \
     CAP_NET_BIND_SERVICE=0 \
@@ -128,7 +132,7 @@ LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/go" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="${VERSION:-1.26.3}" \
+    org.opencontainers.image.version="${GOLANG_VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/go"
@@ -145,7 +149,7 @@ ENV KEEPALIVE=${KEEPALIVE} \
     USER=${USER} \
     WORKDIR=${WORKDIR}
 
-ENV GOLANG_VERSION=${VERSION} \
+ENV GOLANG_VERSION=${GOLANG_VERSION} \
     GOTOOLCHAIN=local \
     GOPATH=/go \
     GO111MODULE=on \
