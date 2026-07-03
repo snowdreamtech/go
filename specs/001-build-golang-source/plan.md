@@ -25,6 +25,7 @@ This feature updates the Dockerfiles for Alpine, Debian, and Rocky Linux variant
 **Performance Goals**: N/A
 
 **Constraints**:
+
 - Must preserve existing Dockerfile file structure and metadata/labels.
 - Must execute ARM64 `binutils-gold` modifications.
 - Must correctly evaluate `WORKDIR $GOPATH`.
@@ -34,6 +35,7 @@ This feature updates the Dockerfiles for Alpine, Debian, and Rocky Linux variant
 ## Constitution Check
 
 *GATE: Passed. No new languages or unapproved frameworks are introduced.*
+
 - Strict alignment with existing standards.
 
 ## Project Structure

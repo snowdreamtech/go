@@ -6,10 +6,12 @@
 
 **Status**: Draft
 
-**Input**: User description: "1. 简单一句话，基于编辑环境镜像https://github.com/snowdreamtech/build-essential，从源码构建最新的golang docker镜像。 2. 分别以下面的镜像位基础镜像： ghcr.io/snowdreamtech/build-essential:3.24.0-alpine ghcr.io/snowdreamtech/build-essential:13.5.0-debian ghcr.io/snowdreamtech/build-essential:10.2.0-rocky 3. 严格参考golang官方镜像dockerfile，通过上面的基础镜像，来构建我们的最新版本golang https://raw.githubusercontent.com/docker-library/golang/refs/heads/master/Dockerfile-linux.template 4. 官方镜像的设置ARG，ENV，一个也不能丢，要保留。 官方镜像对于Debian中Arm64的构建， binutils-gold 操作也要保留 5. WORKDIR $GOPATH 也改到$GOPATH去。"
+**Input**: User description: "1. 简单一句话，基于编辑环境镜像<https://github.com/snowdreamtech/build-essential，从源码构建最新的golang> docker镜像。 2. 分别以下面的镜像位基础镜像： ghcr.io/snowdreamtech/build-essential:3.24.0-alpine ghcr.io/snowdreamtech/build-essential:13.5.0-debian ghcr.io/snowdreamtech/build-essential:10.2.0-rocky 3. 严格参考golang官方镜像dockerfile，通过上面的基础镜像，来构建我们的最新版本golang <https://raw.githubusercontent.com/docker-library/golang/refs/heads/master/Dockerfile-linux.template> 4. 官方镜像的设置ARG，ENV，一个也不能丢，要保留。 官方镜像对于Debian中Arm64的构建， binutils-gold 操作也要保留 5. WORKDIR $GOPATH 也改到$GOPATH去。"
 
 ## Clarifications
+
 ### Session 2026-07-02
+
 - Q: 现有Dockerfile结构如何处理？ → A: 要尊重我们现在的dockerfile结构和现状。在现有基础上进行修改。
 
 ## User Scenarios & Testing *(mandatory)*
