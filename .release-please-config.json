@@ -35,7 +35,7 @@
       "release-type": "simple",
       "component": "rocky",
       "include-component-in-tag": true,
-      "release-as": "1.25.11",
+      "release-as": "1.26.4",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/rocky/CHANGELOG.md"],
       "extra-files": [
