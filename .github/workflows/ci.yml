@@ -237,7 +237,7 @@ jobs:
           persist-credentials: false
 
       - name: "⚡ Setup UniRTM"
-        uses: snowdreamtech/setup-unirtm@cacfb4d739ee46d4a4b2528b02b508df2f560706 # v0.4.0
+        uses: snowdreamtech/setup-unirtm@3de054956dc845d374ab5a1a0fa5b4d242afa9de # v0.5.0
         with:
           unirtm-version: "0.25.3"
           install: true
@@ -365,7 +365,7 @@ jobs:
           persist-credentials: false
 
       - name: "⚡ Setup UniRTM"
-        uses: snowdreamtech/setup-unirtm@cacfb4d739ee46d4a4b2528b02b508df2f560706 # v0.4.0
+        uses: snowdreamtech/setup-unirtm@3de054956dc845d374ab5a1a0fa5b4d242afa9de # v0.5.0
         with:
           unirtm-version: "0.25.3"
           install: true
@@ -374,7 +374,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_SECRET || secrets.GITHUB_TOKEN }}
           UNIRTM_VERIFY_PROVENANCE: "0"
       - name: "📦 Cache Language Dependencies (Advanced)"
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             ~/go/pkg/mod
@@ -535,7 +535,7 @@ jobs:
           fetch-depth: 0
 
       - name: "⚡ Setup UniRTM"
-        uses: snowdreamtech/setup-unirtm@cacfb4d739ee46d4a4b2528b02b508df2f560706 # v0.4.0
+        uses: snowdreamtech/setup-unirtm@3de054956dc845d374ab5a1a0fa5b4d242afa9de # v0.5.0
         with:
           unirtm-version: "0.25.3"
           install: true
@@ -568,7 +568,7 @@ jobs:
           UNIRTM_YES: 1
 
       - name: "⚡ Cache Documentation Links (Lychee)"
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lycheecache
           key: ${{ runner.os }}-lychee-${{ hashFiles('**/*.md') }}
