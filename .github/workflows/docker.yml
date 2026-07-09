@@ -50,7 +50,7 @@ name: "🐳 Docker Multi-Platform Build"
   workflow_dispatch:
     inputs:
       variant:
-        description: "Distribution variant to build"
+        description: "Distribution variant to build (alpine/debian/rocky/all)"
         required: false
         type: choice
         options:
@@ -58,6 +58,15 @@ name: "🐳 Docker Multi-Platform Build"
           - "alpine"
           - "debian"
           - "rocky"
+        default: "all"
+      go_series:
+        description: "Go release series to build (1.26/1.25/all)"
+        required: false
+        type: choice
+        options:
+          - "all"
+          - "1.26"
+          - "1.25"
         default: "all"
       push_images:
         description: "Push images to registries"
@@ -147,11 +156,16 @@ jobs:
       - name: "🎯 Check Variant Filter (workflow_dispatch)"
         id: variant-filter
         run: |
-          # For workflow_dispatch, check if this matrix variant should run
+          # For workflow_dispatch, check if this matrix variant/series should run
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             if [ "${{ inputs.variant }}" != "all" ] && [ "${{ inputs.variant }}" != "${{ matrix.variant }}" ]; then
               echo "skip=true" >> "$GITHUB_OUTPUT"
-              echo "→ Skipping ${{ matrix.variant }} (user selected: ${{ inputs.variant }})"
+              echo "→ Skipping ${{ matrix.variant }} (user selected variant: ${{ inputs.variant }})"
+              exit 0
+            fi
+            if [ "${{ inputs.go_series }}" != "all" ] && [ "${{ inputs.go_series }}" != "${{ matrix.go_series }}" ]; then
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              echo "→ Skipping ${{ matrix.component }} (user selected go_series: ${{ inputs.go_series }})"
               exit 0
             fi
           fi
