@@ -407,10 +407,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
           cache-from: |
-            type=gha,scope=${{ github.ref_name }}-${{ matrix.variant }}
-            type=gha,scope=main-${{ matrix.variant }}
-            type=gha,scope=dev-${{ matrix.variant }}
-          cache-to: type=gha,mode=max,scope=${{ github.ref_name }}-${{ matrix.variant }}
+            type=gha,scope=${{ github.ref_name }}-${{ matrix.component }}
+            type=gha,scope=main-${{ matrix.component }}
+            type=gha,scope=dev-${{ matrix.component }}
+          cache-to: type=gha,mode=max,scope=${{ github.ref_name }}-${{ matrix.component }}
 
       - name: "📈 Analyze Build Cache Performance"
         id: cache-stats
@@ -659,10 +659,10 @@ jobs:
         if: steps.variant-filter.outputs.skip != 'true' && steps.build.conclusion == 'success' && steps.trivy.outcome == 'success'
         continue-on-error: true
         run: |
-          if [ -f "trivy-image-${{ matrix.variant }}.sarif" ]; then
-            critical=$(jq '[.runs[].results[] | select(.level=="error")] | length' trivy-image-${{ matrix.variant }}.sarif)
-            high=$(jq '[.runs[].results[] | select(.level=="warning")] | length' trivy-image-${{ matrix.variant }}.sarif)
-            medium=$(jq '[.runs[].results[] | select(.level=="note")] | length' trivy-image-${{ matrix.variant }}.sarif)
+          if [ -f "trivy-image-${{ matrix.component }}.sarif" ]; then
+            critical=$(jq '[.runs[].results[] | select(.level=="error")] | length' trivy-image-${{ matrix.component }}.sarif)
+            high=$(jq '[.runs[].results[] | select(.level=="warning")] | length' trivy-image-${{ matrix.component }}.sarif)
+            medium=$(jq '[.runs[].results[] | select(.level=="note")] | length' trivy-image-${{ matrix.component }}.sarif)
             {
               echo "critical=${critical}"
               echo "high=${high}"

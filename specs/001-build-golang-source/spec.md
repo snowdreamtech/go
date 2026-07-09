@@ -22,7 +22,7 @@ As a developer, I want to build a Golang Docker image based on `ghcr.io/snowdrea
 
 **Why this priority**: Alpine is commonly used for minimal Docker images and is a core target.
 
-**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/alpine` directory and verifying the Golang version and environment variables.
+**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/1.26/alpine` directory and verifying the Golang version and environment variables.
 
 **Acceptance Scenarios**:
 
@@ -37,7 +37,7 @@ As a developer, I want to build a Golang Docker image based on `ghcr.io/snowdrea
 
 **Why this priority**: Debian is a standard robust base for containerized applications.
 
-**Independent Test**: Can be tested by building the `docker/debian` Dockerfile on an ARM64 architecture to verify `binutils-gold` handling and general compilation.
+**Independent Test**: Can be tested by building the `docker/1.26/debian` Dockerfile on an ARM64 architecture to verify `binutils-gold` handling and general compilation.
 
 **Acceptance Scenarios**:
 
@@ -52,7 +52,7 @@ As a developer, I want to build a Golang Docker image based on `ghcr.io/snowdrea
 
 **Why this priority**: Rocky Linux provides enterprise-grade stability and is required for certain deployments.
 
-**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/rocky` directory.
+**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/1.26/rocky` directory.
 
 **Acceptance Scenarios**:
 

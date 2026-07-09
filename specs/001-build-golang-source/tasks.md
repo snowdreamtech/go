@@ -34,13 +34,13 @@
 
 **Goal**: Build a Golang Docker image based on `ghcr.io/snowdreamtech/build-essential:3.24.0-alpine` from source, so that I can use a consistent Alpine base with the latest Golang.
 
-**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/alpine` directory and verifying the Golang version and environment variables.
+**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/1.26/alpine` directory and verifying the Golang version and environment variables.
 
 ### Implementation for User Story 1
 
-- [x] T001 [P] [US1] Extract Golang source build logic from `Dockerfile-linux.template` and integrate it into `docker/alpine/Dockerfile`.
-- [x] T002 [P] [US1] Preserve all official `ENV` and `ARG` variables (like `GOLANG_VERSION`, `PATH`) in `docker/alpine/Dockerfile`.
-- [x] T003 [P] [US1] Change `WORKDIR` to `$GOPATH` in `docker/alpine/Dockerfile`.
+- [x] T001 [P] [US1] Extract Golang source build logic from `Dockerfile-linux.template` and integrate it into `docker/1.26/alpine/Dockerfile`.
+- [x] T002 [P] [US1] Preserve all official `ENV` and `ARG` variables (like `GOLANG_VERSION`, `PATH`) in `docker/1.26/alpine/Dockerfile`.
+- [x] T003 [P] [US1] Change `WORKDIR` to `$GOPATH` in `docker/1.26/alpine/Dockerfile`.
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently.
 
@@ -50,14 +50,14 @@
 
 **Goal**: Build a Golang Docker image based on `ghcr.io/snowdreamtech/build-essential:13.5.0-debian` from source, ensuring specific platform hacks like `binutils-gold` for ARM64 are preserved.
 
-**Independent Test**: Can be tested by building the `docker/debian` Dockerfile on an ARM64 architecture to verify `binutils-gold` handling and general compilation.
+**Independent Test**: Can be tested by building the `docker/1.26/debian` Dockerfile on an ARM64 architecture to verify `binutils-gold` handling and general compilation.
 
 ### Implementation for User Story 2
 
-- [x] T004 [P] [US2] Extract Golang source build logic and integrate it into `docker/debian/Dockerfile`.
-- [x] T005 [P] [US2] Preserve the `binutils-gold` operation specifically for Debian ARM64 in `docker/debian/Dockerfile`.
-- [x] T006 [P] [US2] Preserve all official `ENV` and `ARG` variables in `docker/debian/Dockerfile`.
-- [x] T007 [P] [US2] Change `WORKDIR` to `$GOPATH` in `docker/debian/Dockerfile`.
+- [x] T004 [P] [US2] Extract Golang source build logic and integrate it into `docker/1.26/debian/Dockerfile`.
+- [x] T005 [P] [US2] Preserve the `binutils-gold` operation specifically for Debian ARM64 in `docker/1.26/debian/Dockerfile`.
+- [x] T006 [P] [US2] Preserve all official `ENV` and `ARG` variables in `docker/1.26/debian/Dockerfile`.
+- [x] T007 [P] [US2] Change `WORKDIR` to `$GOPATH` in `docker/1.26/debian/Dockerfile`.
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently.
 
@@ -67,13 +67,13 @@
 
 **Goal**: Build a Golang Docker image based on `ghcr.io/snowdreamtech/build-essential:10.2.0-rocky` from source.
 
-**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/rocky` directory.
+**Independent Test**: Can be independently tested by building the Dockerfile in the `docker/1.26/rocky` directory.
 
 ### Implementation for User Story 3
 
-- [x] T008 [P] [US3] Extract Golang source build logic and integrate it into `docker/rocky/Dockerfile`.
-- [x] T009 [P] [US3] Preserve all official `ENV` and `ARG` variables in `docker/rocky/Dockerfile`.
-- [x] T010 [P] [US3] Change `WORKDIR` to `$GOPATH` in `docker/rocky/Dockerfile`.
+- [x] T008 [P] [US3] Extract Golang source build logic and integrate it into `docker/1.26/rocky/Dockerfile`.
+- [x] T009 [P] [US3] Preserve all official `ENV` and `ARG` variables in `docker/1.26/rocky/Dockerfile`.
+- [x] T010 [P] [US3] Change `WORKDIR` to `$GOPATH` in `docker/1.26/rocky/Dockerfile`.
 
 **Checkpoint**: All user stories should now be independently functional.
 
@@ -111,7 +111,7 @@
 
 ### Parallel Opportunities
 
-- All three User Stories modify different files (`docker/alpine/Dockerfile`, `docker/debian/Dockerfile`, `docker/rocky/Dockerfile`) and can be executed entirely in parallel.
+- All three User Stories modify different files (`docker/1.26/alpine/Dockerfile`, `docker/1.26/debian/Dockerfile`, `docker/1.26/rocky/Dockerfile`) and can be executed entirely in parallel.
 
 ---
 
@@ -119,9 +119,9 @@
 
 ```bash
 # Launch all tasks for User Story 1 together:
-Task: "Extract Golang source build logic from Dockerfile-linux.template and integrate it into docker/alpine/Dockerfile."
-Task: "Preserve all official ENV and ARG variables in docker/alpine/Dockerfile."
-Task: "Change WORKDIR to $GOPATH in docker/alpine/Dockerfile."
+Task: "Extract Golang source build logic from Dockerfile-linux.template and integrate it into docker/1.26/alpine/Dockerfile."
+Task: "Preserve all official ENV and ARG variables in docker/1.26/alpine/Dockerfile."
+Task: "Change WORKDIR to $GOPATH in docker/1.26/alpine/Dockerfile."
 ```
 
 ---

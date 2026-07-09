@@ -14,19 +14,19 @@ Run the following commands from the repository root:
 ### Alpine
 
 ```bash
-docker build -t snowdreamtech/go:alpine-test -f docker/alpine/Dockerfile .
+docker build -t snowdreamtech/go:alpine-test -f docker/1.26/alpine/Dockerfile .
 ```
 
 ### Debian
 
 ```bash
-docker build -t snowdreamtech/go:debian-test -f docker/debian/Dockerfile .
+docker build -t snowdreamtech/go:debian-test -f docker/1.26/debian/Dockerfile .
 ```
 
 ### Rocky Linux
 
 ```bash
-docker build -t snowdreamtech/go:rocky-test -f docker/rocky/Dockerfile .
+docker build -t snowdreamtech/go:rocky-test -f docker/1.26/rocky/Dockerfile .
 ```
 
 ## Validate the Images
