@@ -1,7 +1,7 @@
 # Go Image (Alpine Variant)
 # Extends snowdreamtech/alpine with additional tooling and configuration.
 
-FROM ghcr.io/snowdreamtech/build-essential:3.24.0-alpine AS build
+FROM ghcr.io/snowdreamtech/build-essential:3.24.1-alpine AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
 COPY --from=golang:alpine /usr/local/go /usr/local/goroot-bootstrap
@@ -102,7 +102,7 @@ RUN set -eux; \
 	find /target -newer /target/usr/local/go -exec sh -c 'ls -ld "$@" && exit "$#"' -- '{}' +; \
 	rm -rf /usr/local/goroot-bootstrap
 
-FROM ghcr.io/snowdreamtech/alpine:3.24.0
+FROM ghcr.io/snowdreamtech/alpine:3.24.1
 
 # Build-time Configuration
 ARG BUILDTIME \

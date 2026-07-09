@@ -1,7 +1,7 @@
 {
-  "docker/1.26/alpine": "1.26.4",
-  "docker/1.26/debian": "1.26.4",
-  "docker/1.26/rocky": "1.26.4",
+  "docker/1.26/alpine": "1.26.5",
+  "docker/1.26/debian": "1.26.5",
+  "docker/1.26/rocky": "1.26.5",
   "docker/1.25/alpine": "1.25.12",
   "docker/1.25/debian": "1.25.12",
   "docker/1.25/rocky": "1.25.12"
