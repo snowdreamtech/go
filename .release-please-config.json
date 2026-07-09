@@ -1,13 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
-    "docker/alpine": {
+    "docker/1.26/alpine": {
       "release-type": "simple",
-      "component": "alpine",
+      "component": "alpine-1.26",
       "include-component-in-tag": true,
       "release-as": "1.26.4",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/alpine/CHANGELOG.md"],
       "extra-files": [
         {
           "type": "generic",
@@ -16,13 +15,12 @@
         }
       ]
     },
-    "docker/debian": {
+    "docker/1.26/debian": {
       "release-type": "simple",
-      "component": "debian",
+      "component": "debian-1.26",
       "include-component-in-tag": true,
       "release-as": "1.26.4",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/debian/CHANGELOG.md"],
       "extra-files": [
         {
           "type": "generic",
@@ -31,13 +29,54 @@
         }
       ]
     },
-    "docker/rocky": {
+    "docker/1.26/rocky": {
       "release-type": "simple",
-      "component": "rocky",
+      "component": "rocky-1.26",
       "include-component-in-tag": true,
       "release-as": "1.26.4",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/rocky/CHANGELOG.md"],
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
+    "docker/1.25/alpine": {
+      "release-type": "simple",
+      "component": "alpine-1.25",
+      "include-component-in-tag": true,
+      "release-as": "1.25.12",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
+    "docker/1.25/debian": {
+      "release-type": "simple",
+      "component": "debian-1.25",
+      "include-component-in-tag": true,
+      "release-as": "1.25.12",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
+    "docker/1.25/rocky": {
+      "release-type": "simple",
+      "component": "rocky-1.25",
+      "include-component-in-tag": true,
+      "release-as": "1.25.12",
+      "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
           "type": "generic",

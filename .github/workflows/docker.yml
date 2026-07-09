@@ -1,6 +1,7 @@
 ---
 # Continuous Delivery (Multi-Platform Docker Build)
-# Purpose: Builds and pushes multi-platform Docker images for Alpine, Debian, and Rocky variants.
+# Purpose: Builds and pushes multi-platform Docker images for Alpine, Debian, and Rocky variants
+#          across Go 1.25.x and 1.26.x release lines (dual-track, version-first layout).
 # Trigger: Pushes to core branches, release tags, daily schedule, and manual dispatch.
 # Permissions:
 #   - contents: read (Required for repository checkout).
@@ -15,12 +16,14 @@ name: "🐳 Docker Multi-Platform Build"
     branches:
       - "dev"
     tags:
-      # Release-Please generated tags for Alpine (primary format)
-      - "alpine-v*"
-      # Release-Please generated tags for Debian (primary format)
-      - "debian-v*"
-      # Release-Please generated tags for Rocky (primary format)
-      - "rocky-v*"
+      # Release-Please generated tags — Go 1.26.x line
+      - "alpine-1.26-v*"
+      - "debian-1.26-v*"
+      - "rocky-1.26-v*"
+      # Release-Please generated tags — Go 1.25.x line
+      - "alpine-1.25-v*"
+      - "debian-1.25-v*"
+      - "rocky-1.25-v*"
       # Legacy semantic version tags (backward compatibility)
       - "[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+"
@@ -67,34 +70,69 @@ permissions:
 
 jobs:
   buildx:
-    name: "🚀 Build & Deliver (${{ matrix.variant }})"
+    name: "🚀 Build & Deliver (${{ matrix.component }}@${{ matrix.go_series }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
+          # --- Go 1.26.x line ---
           - variant: alpine
+            component: alpine-1.26
+            go_series: "1.26"
             version: "1.26.4"
-            context: docker/alpine
+            context: docker/1.26/alpine
             platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
             package_manager: apk
 
           - variant: debian
+            component: debian-1.26
+            go_series: "1.26"
             version: "1.26.4"
-            context: docker/debian
+            context: docker/1.26/debian
             platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x
             is_latest: true
             package_manager: apt-get
 
           - variant: rocky
+            component: rocky-1.26
+            go_series: "1.26"
             version: "1.26.4"
-            context: docker/rocky
+            context: docker/1.26/rocky
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
+            is_latest: false
+            package_manager: dnf
+
+          # --- Go 1.25.x line ---
+          - variant: alpine
+            component: alpine-1.25
+            go_series: "1.25"
+            version: "1.25.12"
+            context: docker/1.25/alpine
+            platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
+            is_latest: false
+            package_manager: apk
+
+          - variant: debian
+            component: debian-1.25
+            go_series: "1.25"
+            version: "1.25.12"
+            context: docker/1.25/debian
+            platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x
+            is_latest: false
+            package_manager: apt-get
+
+          - variant: rocky
+            component: rocky-1.25
+            go_series: "1.25"
+            version: "1.25.12"
+            context: docker/1.25/rocky
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
             is_latest: false
             package_manager: dnf
     concurrency:
-      group: docker-${{ github.workflow }}-${{ github.event_name == 'schedule' && 'nightly' || github.ref }}-${{ matrix.variant }}
+      group: docker-${{ github.workflow }}-${{ github.event_name == 'schedule' && 'nightly' || github.ref }}-${{ matrix.component }}
       cancel-in-progress: ${{ github.event_name != 'schedule' }}
     permissions:
       contents: read
@@ -118,19 +156,19 @@ jobs:
             fi
           fi
 
-          # For tag pushes, check if tag matches this variant
+          # For tag pushes, check if tag matches this component (e.g. alpine-1.26-v1.26.4)
           if [ "${{ github.event_name }}" = "push" ]; then
             case "${{ github.ref }}" in
               refs/tags/*)
                 tag_name="${{ github.ref }}"
                 tag_name="${tag_name#refs/tags/}"
                 case "${tag_name}" in
-                  ${{ matrix.variant }}-*)
-                    # Tag matches variant, continue
+                  ${{ matrix.component }}-*)
+                    # Tag matches component, continue
                     ;;
                   *)
                     echo "skip=true" >> "$GITHUB_OUTPUT"
-                    echo "→ Skipping ${{ matrix.variant }} (tag ${tag_name} does not match)"
+                    echo "→ Skipping ${{ matrix.component }} (tag ${tag_name} does not match)"
                     exit 0
                     ;;
                 esac
@@ -138,23 +176,23 @@ jobs:
             esac
           fi
 
-          # For release events, check if release tag matches this variant
+          # For release events, check if release tag matches this component
           if [ "${{ github.event_name }}" = "release" ]; then
             tag_name="${{ github.event.release.tag_name }}"
             case "${tag_name}" in
-              ${{ matrix.variant }}-*)
-                # Release tag matches variant, continue
+              ${{ matrix.component }}-*)
+                # Release tag matches component, continue
                 ;;
               *)
                 echo "skip=true" >> "$GITHUB_OUTPUT"
-                echo "→ Skipping ${{ matrix.variant }} (release tag ${tag_name} does not match)"
+                echo "→ Skipping ${{ matrix.component }} (release tag ${tag_name} does not match)"
                 exit 0
                 ;;
             esac
           fi
 
           echo "skip=false" >> "$GITHUB_OUTPUT"
-          echo "→ Building ${{ matrix.variant }} ${{ matrix.version }}"
+          echo "→ Building ${{ matrix.component }} (Go ${{ matrix.go_series }}) ${{ matrix.version }}"
 
       - name: "⏱️ Record Build Start Time"
         if: steps.variant-filter.outputs.skip != 'true'
@@ -308,7 +346,7 @@ jobs:
         id: tag-check
         if: steps.variant-filter.outputs.skip != 'true'
         run: |
-          if echo "${{ github.ref }}" | grep -Eq "^refs/tags/${{ matrix.variant }}-v?[0-9]+\.[0-9]+\.[0-9]+$"; then
+          if echo "${{ github.ref }}" | grep -Eq "^refs/tags/${{ matrix.component }}-v?[0-9]+\.[0-9]+\.[0-9]+$"; then
             echo "is_stable=true" >> "$GITHUB_OUTPUT"
           else
             echo "is_stable=false" >> "$GITHUB_OUTPUT"
@@ -345,8 +383,9 @@ jobs:
             type=schedule,enable=true,priority=1000,prefix=,suffix=-${{ matrix.variant }},pattern=nightly
             # Nightly builds - global nightly tag (only for is_latest variant, no suffix)
             type=schedule,enable=${{ matrix.is_latest }},priority=1000,prefix=,suffix=,pattern=nightly
-            # Semantic version tags from Release Please (variant-x.y.z) - variant-suffixed
-            type=match,enable=${{ startsWith(github.ref, format('refs/tags/{0}-', matrix.variant)) }},priority=800,prefix=,suffix=-${{ matrix.variant }},pattern=${{ matrix.variant }}-v?(.*),group=1
+            # Semantic version tags from Release Please (component-x.y.z) - variant-suffixed
+            # e.g. alpine-1.26-v1.26.4 → 1.26.4-alpine
+            type=match,enable=${{ startsWith(github.ref, format('refs/tags/{0}-', matrix.component)) }},priority=800,prefix=,suffix=-${{ matrix.variant }},pattern=${{ matrix.component }}-v?(.*),group=1
         env:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
 
@@ -608,7 +647,7 @@ jobs:
           scan-type: "image"
           image-ref: ${{ steps.trivy-image.outputs.tag }}
           format: "sarif"
-          output: "trivy-image-${{ matrix.variant }}.sarif"
+          output: "trivy-image-${{ matrix.component }}.sarif"
           severity: "CRITICAL,HIGH,MEDIUM,LOW"
           ignore-unfixed: true
           exit-code: "0"
@@ -644,14 +683,15 @@ jobs:
         continue-on-error: true
         uses: github/codeql-action/upload-sarif@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
         with:
-          sarif_file: "trivy-image-${{ matrix.variant }}.sarif"
-          category: "trivy-image-go-${{ matrix.variant }}"
+          sarif_file: "trivy-image-${{ matrix.component }}.sarif"
+          category: "trivy-image-go-${{ matrix.component }}"
 
       - name: "🗑️ Clean Up Build Artifacts"
         if: steps.variant-filter.outputs.skip != 'true' && always()
         run: |
           # Remove SARIF files to save space
           rm -f trivy-image-*.sarif
+          echo "✓ Cleaned up build artifacts for ${{ matrix.component }}"
           echo "✓ Cleaned up build artifacts"
 
       - name: "⚠️ Check Vulnerability Threshold"
@@ -837,7 +877,7 @@ jobs:
                 case "${{ github.ref }}" in
                   refs/tags/*)
                     echo "**Tag:** \`${{ github.ref }}\`"
-                    echo "**Expected pattern:** \`${{ matrix.variant }}-*\`"
+                    echo "**Expected pattern:** \`${{ matrix.component }}-*\`"
                     ;;
                 esac
               fi
