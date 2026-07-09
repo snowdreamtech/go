@@ -28,9 +28,3 @@
 * **release:** deduplicate CHANGELOG headers [skip ci] ([c93827e](https://github.com/snowdreamtech/go/commit/c93827e2900c7971ca0e8ca3af9b57024a054a99))
 * **release:** v0.4.0 - Fix Dependabot docker-compose detection ([e91f7d8](https://github.com/snowdreamtech/go/commit/e91f7d882f3c7b23260f4da02f0e5e53d6399968))
 
-## [1.25.12](https://github.com/snowdreamtech/go/compare/alpine-1.25-v1.25.11...alpine-1.25-v1.25.12) (2026-07-09)
-
-
-### ♻️ Miscellaneous Chores
-
-* **alpine-1.25:** restructure docker layout to version-first directory scheme ([docker/1.25/alpine](https://github.com/snowdreamtech/go/tree/main/docker/1.25/alpine))
