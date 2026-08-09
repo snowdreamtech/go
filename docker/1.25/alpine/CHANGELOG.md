@@ -27,4 +27,3 @@
 * **release:** deduplicate CHANGELOG headers ([64038ca](https://github.com/snowdreamtech/go/commit/64038ca8d027ee5beee1a1c96dbd2f88b9d5a611))
 * **release:** deduplicate CHANGELOG headers [skip ci] ([c93827e](https://github.com/snowdreamtech/go/commit/c93827e2900c7971ca0e8ca3af9b57024a054a99))
 * **release:** v0.4.0 - Fix Dependabot docker-compose detection ([e91f7d8](https://github.com/snowdreamtech/go/commit/e91f7d882f3c7b23260f4da02f0e5e53d6399968))
-
