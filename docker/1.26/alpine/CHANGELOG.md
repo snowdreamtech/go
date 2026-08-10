@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.5](https://github.com/snowdreamtech/go/compare/alpine-1.26-v1.26.5...alpine-1.26-v1.26.5) (2026-08-10)
+
+
+### ♻️ Miscellaneous Chores
+
+* merge upstream template changes ([1c8021e](https://github.com/snowdreamtech/go/commit/1c8021e59630b1d959832e8ffde9bcfd633ced8d))
+
 ## [1.26.5](https://github.com/snowdreamtech/go/compare/alpine-1.26-v1.26.5...alpine-1.26-v1.26.5) (2026-07-09)
 
 
