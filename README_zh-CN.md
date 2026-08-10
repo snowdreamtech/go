@@ -77,7 +77,7 @@ docker run -d \
   snowdreamtech/go:rocky
 ```
 
-**支持的架构**：i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x、ppc64le、s390x
+**支持的架构**：amd64、arm64、ppc64le、s390x
 
 **基础镜像**：`snowdreamtech/rocky:10.2.0`
 
@@ -229,7 +229,7 @@ services:
 |---------|---------------|
 | **Debian** | i386、amd64、arm32v7、arm64、ppc64le、riscv64、s390x |
 | **Alpine** | i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x |
-| **Rocky** | i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x、ppc64le、s390x |
+| **Rocky** | amd64、arm64、ppc64le、s390x |
 
 Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 
