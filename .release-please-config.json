@@ -5,7 +5,7 @@
       "release-type": "simple",
       "component": "alpine-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.5",
+      "release-as": "1.26.6",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -19,7 +19,7 @@
       "release-type": "simple",
       "component": "debian-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.5",
+      "release-as": "1.26.6",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -33,7 +33,7 @@
       "release-type": "simple",
       "component": "rocky-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.5",
+      "release-as": "1.26.6",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -47,7 +47,7 @@
       "release-type": "simple",
       "component": "alpine-1.25",
       "include-component-in-tag": true,
-      "release-as": "1.25.12",
+      "release-as": "1.25.13",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -61,7 +61,7 @@
       "release-type": "simple",
       "component": "debian-1.25",
       "include-component-in-tag": true,
-      "release-as": "1.25.12",
+      "release-as": "1.25.13",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
@@ -75,7 +75,7 @@
       "release-type": "simple",
       "component": "rocky-1.25",
       "include-component-in-tag": true,
-      "release-as": "1.25.12",
+      "release-as": "1.25.13",
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         {
