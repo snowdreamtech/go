@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.26.6](https://github.com/snowdreamtech/go/compare/debian-1.26-v1.26.5...debian-1.26-v1.26.6) (2026-08-21)
+
+
+### 🐛 Bug Fixes
+
+* **docker:** pin bootstrap golang compiler image versions ([e4458ff](https://github.com/snowdreamtech/go/commit/e4458ffc8e377b757a9ed2970df524851589269b))
+* **docker:** update build-essential Debian base image tag to 13.6.0-debian ([756e4dc](https://github.com/snowdreamtech/go/commit/756e4dc99b86c5ee32e1eff1568b03a5cfada016))
+* **release:** bump Go series patch versions to 1.26.6 and 1.25.13 ([e35ad9f](https://github.com/snowdreamtech/go/commit/e35ad9f33b8c60dbd2a1298a7d85d2248c1e4505))
+
+
+### 🛠 Refactoring
+
+* **docker:** remove static version defaults from OCI image labels ([48f1fd9](https://github.com/snowdreamtech/go/commit/48f1fd9400bc9accbecf1fa9964907a9a16b0bec))
+
 ## [1.26.5](https://github.com/snowdreamtech/go/compare/debian-1.26-v1.26.5...debian-1.26-v1.26.5) (2026-08-10)
 
 
