@@ -1,7 +1,7 @@
 # Go Image (Debian Variant)
 # Extends snowdreamtech/debian with additional tooling and configuration.
 
-FROM ghcr.io/snowdreamtech/build-essential:13.5.0-debian AS build
+FROM ghcr.io/snowdreamtech/build-essential:13.6.0-debian AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
 COPY --from=golang:trixie /usr/local/go /usr/local/goroot-bootstrap
