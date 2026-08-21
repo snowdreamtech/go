@@ -4,7 +4,7 @@
 FROM ghcr.io/snowdreamtech/build-essential:3.24.1-alpine AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
-COPY --from=golang:alpine /usr/local/go /usr/local/goroot-bootstrap
+COPY --from=golang:1.25-alpine /usr/local/go /usr/local/goroot-bootstrap
 
 ARG VERSION
 ARG GOLANG_COMMIT=master

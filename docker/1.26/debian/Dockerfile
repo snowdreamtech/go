@@ -4,7 +4,7 @@
 FROM ghcr.io/snowdreamtech/build-essential:13.6.0-debian AS build
 
 ENV PATH=/usr/local/go/bin:$PATH
-COPY --from=golang:trixie /usr/local/go /usr/local/goroot-bootstrap
+COPY --from=golang:1.25 /usr/local/go /usr/local/goroot-bootstrap
 
 ARG VERSION
 ARG GOLANG_COMMIT=master
