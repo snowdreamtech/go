@@ -1,7 +1,7 @@
 ---
 # Continuous Delivery (Multi-Platform Docker Build)
 # Purpose: Builds and pushes multi-platform Docker images for Alpine, Debian, and Rocky variants
-#          across Go 1.25.x and 1.26.x release lines (dual-track, version-first layout).
+#          across Go 1.26.x and 1.27.x release lines (dual-track, version-first layout).
 # Trigger: Pushes to core branches, release tags, daily schedule, and manual dispatch.
 # Permissions:
 #   - contents: read (Required for repository checkout).
@@ -16,14 +16,14 @@ name: "🐳 Docker Multi-Platform Build"
     branches:
       - "dev"
     tags:
+      # Release-Please generated tags — Go 1.27.x line
+      - "alpine-1.27-v*"
+      - "debian-1.27-v*"
+      - "rocky-1.27-v*"
       # Release-Please generated tags — Go 1.26.x line
       - "alpine-1.26-v*"
       - "debian-1.26-v*"
       - "rocky-1.26-v*"
-      # Release-Please generated tags — Go 1.25.x line
-      - "alpine-1.25-v*"
-      - "debian-1.25-v*"
-      - "rocky-1.25-v*"
       # Legacy semantic version tags (backward compatibility)
       - "[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+"
@@ -60,13 +60,13 @@ name: "🐳 Docker Multi-Platform Build"
           - "rocky"
         default: "all"
       go_series:
-        description: "Go release series to build (1.26/1.25/all)"
+        description: "Go release series to build (1.27/1.26/all)"
         required: false
         type: choice
         options:
           - "all"
+          - "1.27"
           - "1.26"
-          - "1.25"
         default: "all"
       push_images:
         description: "Push images to registries"
@@ -137,34 +137,6 @@ jobs:
             go_series: "1.26"
             version: "1.26.7"
             context: docker/1.26/rocky
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
-            is_latest: false
-            package_manager: dnf
-
-          # --- Go 1.25.x line ---
-          - variant: alpine
-            component: alpine-1.25
-            go_series: "1.25"
-            version: "1.25.14"
-            context: docker/1.25/alpine
-            platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
-            is_latest: false
-            package_manager: apk
-
-          - variant: debian
-            component: debian-1.25
-            go_series: "1.25"
-            version: "1.25.14"
-            context: docker/1.25/debian
-            platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
-            is_latest: false
-            package_manager: apt-get
-
-          - variant: rocky
-            component: rocky-1.25
-            go_series: "1.25"
-            version: "1.25.14"
-            context: docker/1.25/rocky
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
             is_latest: false
             package_manager: dnf

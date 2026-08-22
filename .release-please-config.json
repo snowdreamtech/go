@@ -90,51 +90,6 @@
           "jsonpath": "$.jobs.buildx.strategy.matrix.include[5].version"
         }
       ]
-    },
-    "docker/1.25/alpine": {
-      "release-type": "simple",
-      "component": "alpine-1.25",
-      "include-component-in-tag": true,
-      "release-as": "1.25.14",
-      "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.25/alpine/CHANGELOG.md"],
-      "extra-files": [
-        {
-          "type": "yaml",
-          "path": ".github/workflows/docker.yml",
-          "jsonpath": "$.jobs.buildx.strategy.matrix.include[6].version"
-        }
-      ]
-    },
-    "docker/1.25/debian": {
-      "release-type": "simple",
-      "component": "debian-1.25",
-      "include-component-in-tag": true,
-      "release-as": "1.25.14",
-      "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.25/debian/CHANGELOG.md"],
-      "extra-files": [
-        {
-          "type": "yaml",
-          "path": ".github/workflows/docker.yml",
-          "jsonpath": "$.jobs.buildx.strategy.matrix.include[7].version"
-        }
-      ]
-    },
-    "docker/1.25/rocky": {
-      "release-type": "simple",
-      "component": "rocky-1.25",
-      "include-component-in-tag": true,
-      "release-as": "1.25.14",
-      "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.25/rocky/CHANGELOG.md"],
-      "extra-files": [
-        {
-          "type": "yaml",
-          "path": ".github/workflows/docker.yml",
-          "jsonpath": "$.jobs.buildx.strategy.matrix.include[8].version"
-        }
-      ]
     }
   },
   "include-v-in-tag": true,

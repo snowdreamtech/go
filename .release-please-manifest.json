@@ -4,8 +4,5 @@
   "docker/1.27/rocky": "1.27.0",
   "docker/1.26/alpine": "1.26.7",
   "docker/1.26/debian": "1.26.7",
-  "docker/1.26/rocky": "1.26.7",
-  "docker/1.25/alpine": "1.25.14",
-  "docker/1.25/debian": "1.25.14",
-  "docker/1.25/rocky": "1.25.14"
+  "docker/1.26/rocky": "1.26.7"
 }
