@@ -99,8 +99,6 @@ RUN set -eux; \
 		find /usr/local/go -depth -newer /usr/local/.go-date-stamp -exec touch -ht "$touchy" '{}' +; \
 		rm /usr/local/.go-date-stamp; \
 	); \
-	\
-
 	mkdir /target /target/usr /target/usr/local; \
 	mv -vT /usr/local/go /target/usr/local/go; \
 	ln -svfT /target/usr/local/go /usr/local/go; \
@@ -112,7 +110,7 @@ RUN set -eux; \
 	find /target -newer /target/usr/local/go -exec sh -c 'ls -ld "$@" && exit "$#"' -- '{}' +; \
 	rm -rf /usr/local/goroot-bootstrap
 
-FROM ghcr.io/snowdreamtech/debian:13.5.0
+FROM ghcr.io/snowdreamtech/debian:13.6.0
 
 # Build-time Configuration
 ARG BUILDTIME \

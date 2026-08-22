@@ -47,7 +47,7 @@ docker run -d \
 
 **Supported Architectures**: i386, amd64, arm32v7, arm64, ppc64le, riscv64, s390x
 
-**Base Image**: `snowdreamtech/debian:13.5.0`
+**Base Image**: `snowdreamtech/debian:13.6.0`
 
 ### Alpine
 

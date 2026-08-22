@@ -47,7 +47,7 @@ docker run -d \
 
 **支持的架构**：i386、amd64、arm32v7、arm64、ppc64le、riscv64、s390x
 
-**基础镜像**：`snowdreamtech/debian:13.5.0`
+**基础镜像**：`snowdreamtech/debian:13.6.0`
 
 ### Alpine
 
