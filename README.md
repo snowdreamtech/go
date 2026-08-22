@@ -211,13 +211,13 @@ Images follow semantic versioning with the format: `{major}.{minor}.{patch}-{var
 
 Examples:
 
-- `snowdreamtech/go:1.26.6-alpine`
-- `snowdreamtech/go:1.26.6-debian`
-- `snowdreamtech/go:1.26.6-rocky`
+- `snowdreamtech/go:<version>-alpine`
+- `snowdreamtech/go:<version>-debian`
+- `snowdreamtech/go:<version>-rocky`
 
 This format allows:
 
-- **Full version pinning**: `1.26.6-alpine`, `1.26.6-debian`, `1.26.6-rocky` (exact version)
+- **Full version pinning**: `<version>-alpine`, `<version>-debian`, `<version>-rocky` (exact version)
 - **Variant latest tag**: `latest-debian` (tracks most recent release for Debian)
 - **Global latest tag**: `latest` (tracks most recent release, defaults to Debian)
 
