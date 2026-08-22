@@ -1,6 +1,48 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "packages": {
+    "docker/1.27/alpine": {
+      "release-type": "simple",
+      "component": "alpine-1.27",
+      "include-component-in-tag": true,
+      "release-as": "1.27.0",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
+    "docker/1.27/debian": {
+      "release-type": "simple",
+      "component": "debian-1.27",
+      "include-component-in-tag": true,
+      "release-as": "1.27.0",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
+    "docker/1.27/rocky": {
+      "release-type": "simple",
+      "component": "rocky-1.27",
+      "include-component-in-tag": true,
+      "release-as": "1.27.0",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "Dockerfile",
+          "glob": false
+        }
+      ]
+    },
     "docker/1.26/alpine": {
       "release-type": "simple",
       "component": "alpine-1.26",

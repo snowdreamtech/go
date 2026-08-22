@@ -87,13 +87,13 @@ docker run -d \
 
 ```bash
 # Build Debian variant
-docker build -t snowdreamtech/go:debian ./docker/1.26/debian/
+docker build -t snowdreamtech/go:debian ./docker/1.27/debian/
 
 # Build Alpine variant
-docker build -t snowdreamtech/go:alpine ./docker/1.26/alpine/
+docker build -t snowdreamtech/go:alpine ./docker/1.27/alpine/
 
 # Build Rocky variant
-docker build -t snowdreamtech/go:rocky ./docker/1.26/rocky/
+docker build -t snowdreamtech/go:rocky ./docker/1.27/rocky/
 ```
 
 ### Multi-Architecture Build
@@ -108,21 +108,21 @@ docker buildx create --use --name build --node build --driver-opt network=host
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x \
   -t snowdreamtech/go:debian \
-  ./docker/1.26/debian/ \
+  ./docker/1.27/debian/ \
   --push
 
 # Build Alpine for multiple architectures
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
   -t snowdreamtech/go:alpine \
-  ./docker/1.26/alpine/ \
+  ./docker/1.27/alpine/ \
   --push
 
 # Build Rocky for multiple architectures
 docker buildx build \
   --platform=linux/amd64,linux/arm64,linux/ppc64le,linux/s390x \
   -t snowdreamtech/go:rocky \
-  ./docker/1.26/rocky/ \
+  ./docker/1.27/rocky/ \
   --push
 ```
 
@@ -290,9 +290,9 @@ Output example:
 make build
 
 # Build specific variant
-docker build -t go:debian ./docker/1.26/debian/
-docker build -t go:alpine ./docker/1.26/alpine/
-docker build -t go:rocky ./docker/1.26/rocky/
+docker build -t go:debian ./docker/1.27/debian/
+docker build -t go:alpine ./docker/1.27/alpine/
+docker build -t go:rocky ./docker/1.27/rocky/
 ```
 
 ### Testing
@@ -302,7 +302,7 @@ docker build -t go:rocky ./docker/1.26/rocky/
 docker run --rm go:debian id
 
 # Test custom user creation
-docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t go:debian-test ./docker/1.26/debian/
+docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t go:debian-test ./docker/1.27/debian/
 docker run --rm go:debian-test id
 # Expected: uid=1000(testuser) gid=1000(testuser)
 

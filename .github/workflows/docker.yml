@@ -85,6 +85,34 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # --- Go 1.27.x line ---
+          - variant: alpine
+            component: alpine-1.27
+            go_series: "1.27"
+            version: "1.27.0"
+            context: docker/1.27/alpine
+            platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
+            is_latest: false
+            package_manager: apk
+
+          - variant: debian
+            component: debian-1.27
+            go_series: "1.27"
+            version: "1.27.0"
+            context: docker/1.27/debian
+            platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
+            is_latest: true
+            package_manager: apt-get
+
+          - variant: rocky
+            component: rocky-1.27
+            go_series: "1.27"
+            version: "1.27.0"
+            context: docker/1.27/rocky
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
+            is_latest: false
+            package_manager: dnf
+
           # --- Go 1.26.x line ---
           - variant: alpine
             component: alpine-1.26
@@ -101,7 +129,7 @@ jobs:
             version: "1.26.7"
             context: docker/1.26/debian
             platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
-            is_latest: true
+            is_latest: false
             package_manager: apt-get
 
           - variant: rocky
