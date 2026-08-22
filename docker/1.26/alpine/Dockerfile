@@ -87,8 +87,6 @@ RUN set -eux; \
 		find /usr/local/go -depth -newer /usr/local/.go-date-stamp -exec touch -ht "$touchy" '{}' +; \
 		rm /usr/local/.go-date-stamp; \
 	); \
-	\
-
 	mkdir /target /target/usr /target/usr/local; \
 	mv -vT /usr/local/go /target/usr/local/go; \
 	ln -svfT /target/usr/local/go /usr/local/go; \
