@@ -5,7 +5,7 @@
       "release-type": "simple",
       "component": "alpine-1.27",
       "include-component-in-tag": true,
-      "release-as": "1.27.0",
+      "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.27/alpine/CHANGELOG.md"],
       "extra-files": [
@@ -20,7 +20,7 @@
       "release-type": "simple",
       "component": "debian-1.27",
       "include-component-in-tag": true,
-      "release-as": "1.27.0",
+      "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.27/debian/CHANGELOG.md"],
       "extra-files": [
@@ -35,7 +35,7 @@
       "release-type": "simple",
       "component": "rocky-1.27",
       "include-component-in-tag": true,
-      "release-as": "1.27.0",
+      "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.27/rocky/CHANGELOG.md"],
       "extra-files": [
@@ -50,7 +50,7 @@
       "release-type": "simple",
       "component": "alpine-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.7",
+      "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.26/alpine/CHANGELOG.md"],
       "extra-files": [
@@ -65,7 +65,7 @@
       "release-type": "simple",
       "component": "debian-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.7",
+      "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.26/debian/CHANGELOG.md"],
       "extra-files": [
@@ -80,7 +80,7 @@
       "release-type": "simple",
       "component": "rocky-1.26",
       "include-component-in-tag": true,
-      "release-as": "1.26.7",
+      "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
       "exclude-paths": ["docker/1.26/rocky/CHANGELOG.md"],
       "extra-files": [
