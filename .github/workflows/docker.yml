@@ -249,7 +249,7 @@ jobs:
 
       - name: "🛠️ Configure Docker Buildx"
         if: steps.variant-filter.outputs.skip != 'true'
-        uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 # v4.1.0
+        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
         with:
           buildkitd-config: .github/buildkitd.toml
 
@@ -483,7 +483,7 @@ jobs:
               sh -c "
                 echo '  ✓ Entrypoint execution: OK' && \
                 printf '  ✓ Timezone: ' && date '+%Z %z' && \
-                printf '  ✓ User context: ' && id -un && \
+                printf '  ✓ User context: %s\n' "$(id -un 2>/dev/null || id -u)" && \
                 printf '  ✓ Package manager: ' && \
                 ${pkg_check} && echo 'functional' && \
                 echo '  ✓ All checks passed'
@@ -530,7 +530,7 @@ jobs:
 
           # DockerHub (no prefix)
           if [ "${{ steps.login-dockerhub.outcome }}" = "success" ]; then
-            dockerhub_tag=$(echo "${TAGS}" | grep -v '/' | head -n 1)
+            dockerhub_tag=$(echo "${TAGS}" | grep -v '^ghcr.io/' | head -n 1)
             if [ -n "${dockerhub_tag}" ]; then
               echo "  Testing DockerHub: ${dockerhub_tag}"
               if retry_pull "${dockerhub_tag}"; then
@@ -605,7 +605,7 @@ jobs:
       - name: "📤 Upload Image Security Scan (SARIF)"
         if: steps.variant-filter.outputs.skip != 'true' && steps.build.conclusion == 'success' && steps.trivy.outcome == 'success'
         continue-on-error: true
-        uses: github/codeql-action/upload-sarif@5595ccaf912efad79be6eef63a5619ff05969be3 # v4.37.6
+        uses: github/codeql-action/upload-sarif@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
         with:
           sarif_file: "trivy-image-${{ matrix.component }}.sarif"
           category: "trivy-image-go-${{ matrix.component }}"
