@@ -7,8 +7,11 @@
       "include-component-in-tag": true,
       "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.27/alpine/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.27/alpine/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.27/alpine/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",
@@ -22,8 +25,11 @@
       "include-component-in-tag": true,
       "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.27/debian/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.27/debian/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.27/debian/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",
@@ -37,8 +43,11 @@
       "include-component-in-tag": true,
       "release-as": "1.27.1",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.27/rocky/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.27/rocky/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.27/rocky/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",
@@ -52,8 +61,11 @@
       "include-component-in-tag": true,
       "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.26/alpine/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.26/alpine/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.26/alpine/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",
@@ -67,8 +79,11 @@
       "include-component-in-tag": true,
       "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.26/debian/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.26/debian/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.26/debian/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",
@@ -82,8 +97,11 @@
       "include-component-in-tag": true,
       "release-as": "1.26.8",
       "changelog-path": "CHANGELOG.md",
-      "exclude-paths": ["docker/1.26/rocky/CHANGELOG.md"],
+      "exclude-paths": [
+        "docker/1.26/rocky/CHANGELOG.md"
+      ],
       "extra-files": [
+        "docker/1.26/rocky/Dockerfile",
         {
           "type": "yaml",
           "path": ".github/workflows/docker.yml",

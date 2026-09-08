@@ -89,7 +89,11 @@ jobs:
           - variant: alpine
             component: alpine-1.27
             go_series: "1.27"
+            # x-release-please-start-version
+
             version: "1.27.1"
+
+            # x-release-please-end
             context: docker/1.27/alpine
             platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
@@ -98,7 +102,11 @@ jobs:
           - variant: debian
             component: debian-1.27
             go_series: "1.27"
+            # x-release-please-start-version
+
             version: "1.27.1"
+
+            # x-release-please-end
             context: docker/1.27/debian
             platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: true
@@ -107,7 +115,11 @@ jobs:
           - variant: rocky
             component: rocky-1.27
             go_series: "1.27"
+            # x-release-please-start-version
+
             version: "1.27.1"
+
+            # x-release-please-end
             context: docker/1.27/rocky
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
             is_latest: false
@@ -117,7 +129,11 @@ jobs:
           - variant: alpine
             component: alpine-1.26
             go_series: "1.26"
+            # x-release-please-start-version
+
             version: "1.26.8"
+
+            # x-release-please-end
             context: docker/1.26/alpine
             platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
@@ -126,7 +142,11 @@ jobs:
           - variant: debian
             component: debian-1.26
             go_series: "1.26"
+            # x-release-please-start-version
+
             version: "1.26.8"
+
+            # x-release-please-end
             context: docker/1.26/debian
             platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
@@ -135,7 +155,11 @@ jobs:
           - variant: rocky
             component: rocky-1.26
             go_series: "1.26"
+            # x-release-please-start-version
+
             version: "1.26.8"
+
+            # x-release-please-end
             context: docker/1.26/rocky
             platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
             is_latest: false
