@@ -6,4 +6,3 @@
 ### 🐛 Bug Fixes
 
 * **docker:** add missing entrypoint.d directories for Go 1.27 docker images ([54a84cd](https://github.com/snowdreamtech/go/commit/54a84cde8ca7b0962d6eef039389b351a0a501d7))
-
