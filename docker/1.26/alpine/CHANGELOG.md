@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.26.8](https://github.com/snowdreamtech/go/compare/alpine-1.26-v1.26.7...alpine-1.26-v1.26.8) (2026-09-29)
+
+
+### 🚀 Features
+
+* **release:** initialize VERSION ARG in Dockerfiles for Release-Please change tracking ([bcb0307](https://github.com/snowdreamtech/go/commit/bcb0307d82ccd714c5675b88c6e65784e10cad39))
+
+
+### 🐛 Bug Fixes
+
+* **docker:** bump Go series patch versions to 1.27.1 and 1.26.8 ([f2e35ce](https://github.com/snowdreamtech/go/commit/f2e35ced2c1275d246dd86d61863c4d03dd10c93))
+
 ## [1.26.7](https://github.com/snowdreamtech/go/compare/alpine-1.26-v1.26.7...alpine-1.26-v1.26.7) (2026-08-22)
 
 
