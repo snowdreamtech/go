@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.2](https://github.com/snowdreamtech/go/compare/alpine-1.27-v1.27.1...alpine-1.27-v1.27.2) (2026-10-09)
+
+
+### 🐛 Bug Fixes
+
+* **release:** bump Go series patch versions to 1.27.2 and 1.26.9 ([907ea19](https://github.com/snowdreamtech/go/commit/907ea193901bc323fa7bcbeff2c40210b2ad07c5))
+
 ## [1.27.1](https://github.com/snowdreamtech/go/compare/alpine-1.27-v1.27.0...alpine-1.27-v1.27.1) (2026-09-29)
 
 

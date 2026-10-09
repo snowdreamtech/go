@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.9](https://github.com/snowdreamtech/go/compare/rocky-1.26-v1.26.8...rocky-1.26-v1.26.9) (2026-10-09)
+
+
+### 🐛 Bug Fixes
+
+* **release:** bump Go series patch versions to 1.27.2 and 1.26.9 ([907ea19](https://github.com/snowdreamtech/go/commit/907ea193901bc323fa7bcbeff2c40210b2ad07c5))
+
 ## [1.26.8](https://github.com/snowdreamtech/go/compare/rocky-1.26-v1.26.7...rocky-1.26-v1.26.8) (2026-09-29)
 
 
