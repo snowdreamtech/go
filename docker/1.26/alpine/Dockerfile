@@ -104,7 +104,7 @@ FROM ghcr.io/snowdreamtech/alpine:3.24.1
 
 # Build-time Configuration
 # x-release-please-start-version
-ARG VERSION="1.26.8"
+ARG VERSION="1.26.9"
 # x-release-please-end
 
 ARG BUILDTIME \
