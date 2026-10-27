@@ -37,6 +37,42 @@ url = "https://github.com/anchore/syft/releases/download/v1.52.0/syft_1.52.0_win
 checksum = "sha256:f9c0596d79d0e99eacb3f1e3ffca37ca22e7cdc809b1463cdfec77798939bd09"
 url = "https://github.com/anchore/syft/releases/download/v1.52.0/syft_1.52.0_windows_arm64.zip"
 
+[[tools."github:anchore/syft"]]
+version = "1.55.0"
+backend = "github"
+
+[tools."github:anchore/syft"."platforms.linux-amd64"]
+checksum = "sha256:bb65249542db5fedeeb4d3f9b018b75e7264dbfbbb10486f044581a92f90490d"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.linux-amd64-musl"]
+checksum = "sha256:bb65249542db5fedeeb4d3f9b018b75e7264dbfbbb10486f044581a92f90490d"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.linux-arm64"]
+checksum = "sha256:929bd163db2d7cd2255d3bcb8967208079813d7b46b0c952f7b794d8e2c7d304"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_arm64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.linux-arm64-musl"]
+checksum = "sha256:929bd163db2d7cd2255d3bcb8967208079813d7b46b0c952f7b794d8e2c7d304"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_arm64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.macos-amd64"]
+checksum = "sha256:e2e5831cbabaec9a36fe65c34755c1113982c842a685edce3ce0b54a0ded8003"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_amd64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.macos-arm64"]
+checksum = "sha256:1217c258bd5eb91ef3189cf22a82e02f9cac07e4ce934350f428e93aff674625"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_arm64.tar.gz"
+
+[tools."github:anchore/syft"."platforms.windows-amd64"]
+checksum = "sha256:ada4c9b93af575f479ce80fce6629897272a2d41f300a14bc49bace020767ca2"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_amd64.zip"
+
+[tools."github:anchore/syft"."platforms.windows-arm64"]
+checksum = "sha256:f52f7796e41e4d1ae511c228c99239fd09887077336dcb7a8c2aa7046ed7c816"
+url = "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_arm64.zip"
+
 [[tools."github:aquasecurity/trivy"]]
 version = "0.74.0"
 backend = "github"
@@ -366,6 +402,42 @@ url = "https://github.com/google/osv-scanner/releases/download/v2.6.0/osv-scanne
 checksum = "sha256:ca1379da0e408279ef2c85cde0846a903495738a91c7b065a208048437c1686c"
 url = "https://github.com/google/osv-scanner/releases/download/v2.6.0/osv-scanner_windows_arm64.exe"
 
+[[tools."github:google/osv-scanner"]]
+version = "2.7.0"
+backend = "github"
+
+[tools."github:google/osv-scanner"."platforms.linux-amd64"]
+checksum = "sha256:160c6253e2922e9e0a6a9771c5c4c40a4b3c6090b34a3cdd5e80c96cc2e4218b"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_amd64"
+
+[tools."github:google/osv-scanner"."platforms.linux-amd64-musl"]
+checksum = "sha256:160c6253e2922e9e0a6a9771c5c4c40a4b3c6090b34a3cdd5e80c96cc2e4218b"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_amd64"
+
+[tools."github:google/osv-scanner"."platforms.linux-arm64"]
+checksum = "sha256:4061ef4c021ed3c47f203b818f337e351336cc5cd67c0274fc36bd1dfc728dd7"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_arm64"
+
+[tools."github:google/osv-scanner"."platforms.linux-arm64-musl"]
+checksum = "sha256:4061ef4c021ed3c47f203b818f337e351336cc5cd67c0274fc36bd1dfc728dd7"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_arm64"
+
+[tools."github:google/osv-scanner"."platforms.macos-amd64"]
+checksum = "sha256:e82c5df7ab0a42dff29a1cd0660711447b56b4c0483ff66ad8634df10fd81a45"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_darwin_amd64"
+
+[tools."github:google/osv-scanner"."platforms.macos-arm64"]
+checksum = "sha256:d4926ef8da134332543be276dff157e4c170f99ad91fc48e89448a8816bdf70b"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_darwin_arm64"
+
+[tools."github:google/osv-scanner"."platforms.windows-amd64"]
+checksum = "sha256:9964ed64ec9a387391eb4cc006ad5c531154821aef29b793e02c448de4686438"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_windows_amd64.exe"
+
+[tools."github:google/osv-scanner"."platforms.windows-arm64"]
+checksum = "sha256:3e630381c1f1fd3c9c4d447e6ff2ef6c737083371722773db8337eead0f97962"
+url = "https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_windows_arm64.exe"
+
 [[tools."github:goreleaser/goreleaser"]]
 version = "2.18.2"
 backend = "github"
@@ -519,6 +591,31 @@ url = "https://github.com/zizmorcore/zizmor/releases/download/v1.30.1/zizmor-aar
 
 [tools."github:zizmorcore/zizmor"."platforms.windows-amd64"]
 url = "https://github.com/zizmorcore/zizmor/releases/download/v1.30.1/zizmor-x86_64-pc-windows-msvc.zip"
+
+[[tools."github:zizmorcore/zizmor"]]
+version = "1.31.1"
+backend = "github"
+
+[tools."github:zizmorcore/zizmor"."platforms.linux-amd64"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.linux-amd64-musl"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.linux-arm64"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-unknown-linux-gnu.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.linux-arm64-musl"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-unknown-linux-gnu.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.macos-amd64"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-apple-darwin.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.macos-arm64"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-apple-darwin.tar.gz"
+
+[tools."github:zizmorcore/zizmor"."platforms.windows-amd64"]
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-pc-windows-msvc.zip"
 
 [[tools."go"]]
 version = "1.27.1"
@@ -688,6 +785,26 @@ backend = "go-pkg"
 
 [tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.windows-arm64"]
 
+[[tools."go:golang.org/x/vuln/cmd/govulncheck"]]
+version = "v1.9.0"
+backend = "go-pkg"
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.linux-amd64"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.linux-amd64-musl"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.linux-arm64"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.linux-arm64-musl"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.macos-amd64"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.macos-arm64"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.windows-amd64"]
+
+[tools."go:golang.org/x/vuln/cmd/govulncheck"."platforms.windows-arm64"]
+
 [[tools."go:mvdan.cc/sh/v3/cmd/shfmt"]]
 version = "v3.14.0"
 backend = "go"
@@ -764,8 +881,48 @@ backend = "npm"
 
 [tools."npm:@commitlint/cli"."platforms.windows-arm64"]
 
+[[tools."npm:@commitlint/cli"]]
+version = "21.2.4"
+backend = "npm"
+
+[tools."npm:@commitlint/cli"."platforms.linux-amd64"]
+
+[tools."npm:@commitlint/cli"."platforms.linux-amd64-musl"]
+
+[tools."npm:@commitlint/cli"."platforms.linux-arm64"]
+
+[tools."npm:@commitlint/cli"."platforms.linux-arm64-musl"]
+
+[tools."npm:@commitlint/cli"."platforms.macos-amd64"]
+
+[tools."npm:@commitlint/cli"."platforms.macos-arm64"]
+
+[tools."npm:@commitlint/cli"."platforms.windows-amd64"]
+
+[tools."npm:@commitlint/cli"."platforms.windows-arm64"]
+
 [[tools."npm:@commitlint/config-conventional"]]
 version = "21.2.3"
+backend = "npm"
+
+[tools."npm:@commitlint/config-conventional"."platforms.linux-amd64"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.linux-amd64-musl"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.linux-arm64"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.linux-arm64-musl"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.macos-amd64"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.macos-arm64"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.windows-amd64"]
+
+[tools."npm:@commitlint/config-conventional"."platforms.windows-arm64"]
+
+[[tools."npm:@commitlint/config-conventional"]]
+version = "21.2.4"
 backend = "npm"
 
 [tools."npm:@commitlint/config-conventional"."platforms.linux-amd64"]
@@ -924,8 +1081,48 @@ backend = "npm"
 
 [tools."npm:eslint"."platforms.windows-arm64"]
 
+[[tools."npm:eslint"]]
+version = "10.13.0"
+backend = "npm"
+
+[tools."npm:eslint"."platforms.linux-amd64"]
+
+[tools."npm:eslint"."platforms.linux-amd64-musl"]
+
+[tools."npm:eslint"."platforms.linux-arm64"]
+
+[tools."npm:eslint"."platforms.linux-arm64-musl"]
+
+[tools."npm:eslint"."platforms.macos-amd64"]
+
+[tools."npm:eslint"."platforms.macos-arm64"]
+
+[tools."npm:eslint"."platforms.windows-amd64"]
+
+[tools."npm:eslint"."platforms.windows-arm64"]
+
 [[tools."npm:markdownlint-cli2"]]
 version = "0.23.3"
+backend = "npm"
+
+[tools."npm:markdownlint-cli2"."platforms.linux-amd64"]
+
+[tools."npm:markdownlint-cli2"."platforms.linux-amd64-musl"]
+
+[tools."npm:markdownlint-cli2"."platforms.linux-arm64"]
+
+[tools."npm:markdownlint-cli2"."platforms.linux-arm64-musl"]
+
+[tools."npm:markdownlint-cli2"."platforms.macos-amd64"]
+
+[tools."npm:markdownlint-cli2"."platforms.macos-arm64"]
+
+[tools."npm:markdownlint-cli2"."platforms.windows-amd64"]
+
+[tools."npm:markdownlint-cli2"."platforms.windows-arm64"]
+
+[[tools."npm:markdownlint-cli2"]]
+version = "0.24.0"
 backend = "npm"
 
 [tools."npm:markdownlint-cli2"."platforms.linux-amd64"]
@@ -964,8 +1161,48 @@ backend = "npm"
 
 [tools."npm:prettier"."platforms.windows-arm64"]
 
+[[tools."npm:prettier"]]
+version = "3.9.10"
+backend = "npm"
+
+[tools."npm:prettier"."platforms.linux-amd64"]
+
+[tools."npm:prettier"."platforms.linux-amd64-musl"]
+
+[tools."npm:prettier"."platforms.linux-arm64"]
+
+[tools."npm:prettier"."platforms.linux-arm64-musl"]
+
+[tools."npm:prettier"."platforms.macos-amd64"]
+
+[tools."npm:prettier"."platforms.macos-arm64"]
+
+[tools."npm:prettier"."platforms.windows-amd64"]
+
+[tools."npm:prettier"."platforms.windows-arm64"]
+
 [[tools."npm:sort-package-json"]]
 version = "4.0.0"
+backend = "npm"
+
+[tools."npm:sort-package-json"."platforms.linux-amd64"]
+
+[tools."npm:sort-package-json"."platforms.linux-amd64-musl"]
+
+[tools."npm:sort-package-json"."platforms.linux-arm64"]
+
+[tools."npm:sort-package-json"."platforms.linux-arm64-musl"]
+
+[tools."npm:sort-package-json"."platforms.macos-amd64"]
+
+[tools."npm:sort-package-json"."platforms.macos-arm64"]
+
+[tools."npm:sort-package-json"."platforms.windows-amd64"]
+
+[tools."npm:sort-package-json"."platforms.windows-arm64"]
+
+[[tools."npm:sort-package-json"]]
+version = "4.1.0"
 backend = "npm"
 
 [tools."npm:sort-package-json"."platforms.linux-amd64"]
@@ -1086,6 +1323,26 @@ backend = "pipx"
 
 [[tools."pipx:pre-commit"]]
 version = "4.6.2"
+backend = "pipx"
+
+[tools."pipx:pre-commit"."platforms.linux-amd64"]
+
+[tools."pipx:pre-commit"."platforms.linux-amd64-musl"]
+
+[tools."pipx:pre-commit"."platforms.linux-arm64"]
+
+[tools."pipx:pre-commit"."platforms.linux-arm64-musl"]
+
+[tools."pipx:pre-commit"."platforms.macos-amd64"]
+
+[tools."pipx:pre-commit"."platforms.macos-arm64"]
+
+[tools."pipx:pre-commit"."platforms.windows-amd64"]
+
+[tools."pipx:pre-commit"."platforms.windows-arm64"]
+
+[[tools."pipx:pre-commit"]]
+version = "4.7.0"
 backend = "pipx"
 
 [tools."pipx:pre-commit"."platforms.linux-amd64"]
