@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.10](https://github.com/snowdreamtech/go/compare/debian-1.26-v1.26.9...debian-1.26-v1.26.10) (2026-10-27)
+
+
+### 🐛 Bug Fixes
+
+* **release:** bump Go series patch versions to 1.27.3 and 1.26.10 ([7f46b09](https://github.com/snowdreamtech/go/commit/7f46b09507bcfafee06a7546b4d1e2eb4204e7c3))
+
 ## [1.26.9](https://github.com/snowdreamtech/go/compare/debian-1.26-v1.26.8...debian-1.26-v1.26.9) (2026-10-09)
 
 
