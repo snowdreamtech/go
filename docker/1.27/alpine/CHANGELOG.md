@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.3](https://github.com/snowdreamtech/go/compare/alpine-1.27-v1.27.3...alpine-1.27-v1.27.3) (2026-10-29)
+
+
+### 🚀 Features
+
+* align with base dev template and retain go docker configs ([05afae1](https://github.com/snowdreamtech/go/commit/05afae1aa7e94c1399e4e7fe515610c56d2b6718))
+
 ## [1.27.3](https://github.com/snowdreamtech/go/compare/alpine-1.27-v1.27.2...alpine-1.27-v1.27.3) (2026-10-27)
 
 ### 🐛 Bug Fixes
