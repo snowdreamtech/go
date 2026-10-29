@@ -1,22 +1,22 @@
-# Base
+# Go
 
-[![CI 流水线](https://img.shields.io/github/actions/workflow/status/snowdreamtech/base/ci.yml?branch=main&label=CI%20Pipeline)](https://github.com/snowdreamtech/base/actions/workflows/ci.yml)
-[![CD 自动化发布](https://img.shields.io/github/actions/workflow/status/snowdreamtech/base/cd.yml?branch=main&label=CD%20Pipeline)](https://github.com/snowdreamtech/base/actions/workflows/cd.yml)
-[![CodeQL 审计](https://img.shields.io/github/actions/workflow/status/snowdreamtech/base/codeql.yml?branch=main&label=CodeQL&logo=github)](https://github.com/snowdreamtech/base/actions/workflows/codeql.yml)
-[![安全审计](https://img.shields.io/badge/Security-Zizmor%20%7C%20Trivy%20%7C%20Gitleaks-brightgreen)](https://github.com/snowdreamtech/base/actions/workflows/ci.yml)
+[![CI 流水线](https://img.shields.io/github/actions/workflow/status/snowdreamtech/go/ci.yml?branch=main&label=CI%20Pipeline)](https://github.com/snowdreamtech/go/actions/workflows/ci.yml)
+[![CD 自动化发布](https://img.shields.io/github/actions/workflow/status/snowdreamtech/go/cd.yml?branch=main&label=CD%20Pipeline)](https://github.com/snowdreamtech/go/actions/workflows/cd.yml)
+[![CodeQL 审计](https://img.shields.io/github/actions/workflow/status/snowdreamtech/go/codeql.yml?branch=main&label=CodeQL&logo=github)](https://github.com/snowdreamtech/go/actions/workflows/codeql.yml)
+[![安全审计](https://img.shields.io/badge/Security-Zizmor%20%7C%20Trivy%20%7C%20Gitleaks-brightgreen)](https://github.com/snowdreamtech/go/actions/workflows/ci.yml)
 [![许可证: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/MIT)
-![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/base)
-![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/base/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/base)
-![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/base)
+![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/go)
+![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/go/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/go)
+![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/go)
 
 [English](README.md) | [简体中文](README_zh-CN.md)
 
-Docker 基础模板，提供标准化的容器基础，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
+Go Docker 镜像打包。提供标准化的容器环境，具有灵活的入口点系统、多架构支持以及跨 Alpine、Debian 和 Rocky Linux 发行版的一致配置模式。
 
 ## 概述
 
-Docker 基础模板作为构建容器化应用程序的基础起点。它提供：
+Docker Go 镜像作为构建容器化应用程序的基础起点。它提供：
 
 - **标准化的 Dockerfile**，包含 OCI 注释和最佳实践
 - **灵活的入口点系统**，支持自定义初始化脚本
@@ -27,10 +27,12 @@ Docker 基础模板作为构建容器化应用程序的基础起点。它提供�
 
 ## 快速开始
 
+> **提示**：本镜像同时提供 `snowdreamtech/go` 和 `snowdreamtech/golang` 两个等价的镜像名，拉取时可互相替换。下文示例统一使用 `go`。
+
 ```bash
 # 拉取并运行默认的 Debian 变体
-docker pull snowdreamtech/base:debian
-docker run -d --name=base -e TZ=Asia/Shanghai snowdreamtech/base:debian
+docker pull snowdreamtech/go:debian
+docker run -d --name=go -e TZ=Asia/Shanghai snowdreamtech/go:debian
 
 # 或使用 docker compose
 docker compose up -d
@@ -44,15 +46,15 @@ docker compose up -d
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
-**支持的架构**：amd64、arm32v7、arm64、ppc64le、riscv64、s390x
+**支持的架构**：i386、amd64、arm32v7、arm64、ppc64le、riscv64、s390x
 
-**基础镜像**：`snowdreamtech/debian:latest`
+**基础镜像**：`snowdreamtech/debian:13.6.0`
 
 ### Alpine
 
@@ -60,15 +62,15 @@ docker run -d \
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:alpine
+  snowdreamtech/go:alpine
 ```
 
 **支持的架构**：i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x
 
-**基础镜像**：`snowdreamtech/alpine:latest`
+**基础镜像**：`snowdreamtech/alpine:3.24.0`
 
 ### Rocky
 
@@ -76,15 +78,15 @@ docker run -d \
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e TZ=Asia/Shanghai \
   --restart unless-stopped \
-  snowdreamtech/base:rocky
+  snowdreamtech/go:rocky
 ```
 
 **支持的架构**：amd64、arm64、ppc64le、s390x
 
-**基础镜像**：`snowdreamtech/rocky:latest`
+**基础镜像**：`snowdreamtech/rocky:10.2.0`
 
 ## 构建说明
 
@@ -92,13 +94,13 @@ docker run -d \
 
 ```bash
 # 构建 Debian 变体
-docker build -t snowdreamtech/base:debian ./docker/debian/
+docker build -t snowdreamtech/go:debian ./docker/1.27/debian/
 
 # 构建 Alpine 变体
-docker build -t snowdreamtech/base:alpine ./docker/alpine/
+docker build -t snowdreamtech/go:alpine ./docker/1.27/alpine/
 
 # 构建 Rocky 变体
-docker build -t snowdreamtech/base:rocky ./docker/rocky/
+docker build -t snowdreamtech/go:rocky ./docker/1.27/rocky/
 ```
 
 ### 多架构构建
@@ -111,23 +113,23 @@ docker buildx create --use --name build --node build --driver-opt network=host
 
 # 为多个架构构建 Debian
 docker buildx build \
-  --platform=linux/386,linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
-  -t snowdreamtech/base:debian \
-  ./docker/debian/ \
+  --platform=linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x \
+  -t snowdreamtech/go:debian \
+  ./docker/1.27/debian/ \
   --push
 
 # 为多个架构构建 Alpine
 docker buildx build \
   --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x \
-  -t snowdreamtech/base:alpine \
-  ./docker/alpine/ \
+  -t snowdreamtech/go:alpine \
+  ./docker/1.27/alpine/ \
   --push
 
 # 为多个架构构建 Rocky
 docker buildx build \
   --platform=linux/amd64,linux/arm64,linux/ppc64le,linux/s390x \
-  -t snowdreamtech/base:rocky \
-  ./docker/rocky/ \
+  -t snowdreamtech/go:rocky \
+  ./docker/1.27/rocky/ \
   --push
 ```
 
@@ -164,19 +166,19 @@ docker build \
   --build-arg PUID=1000 \
   --build-arg PGID=1000 \
   --build-arg USER=appuser \
-  -t snowdreamtech/base:debian-custom \
-  ./docker/debian/
+  -t snowdreamtech/go:debian-custom \
+  ./docker/1.26/debian/
 ```
 
 或在运行时（需要重新构建镜像）：
 
 ```bash
 docker run -d \
-  --name=base \
+  --name=go \
   -e PUID=1000 \
   -e PGID=1000 \
   -e USER=appuser \
-  snowdreamtech/base:debian
+  snowdreamtech/go:debian
 ```
 
 **注意**：仅当 `PUID≠0`、`PGID≠0` 且 `USER≠root` 时才会创建用户。
@@ -187,9 +189,9 @@ docker run -d \
 
 ```yaml
 services:
-  base:
-    image: snowdreamtech/base:debian
-    container_name: base
+  go:
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
     restart: unless-stopped
@@ -199,9 +201,9 @@ services:
 
 ```yaml
 services:
-  base:
-    image: snowdreamtech/base:debian
-    container_name: base
+  go:
+    image: snowdreamtech/go:debian
+    container_name: go
     environment:
       - TZ=Asia/Shanghai
       - DEBUG=true
@@ -217,13 +219,13 @@ services:
 
 示例：
 
-- `snowdreamtech/base:<version>-debian`
-- `snowdreamtech/base:<version>-alpine`
-- `snowdreamtech/base:<version>-rocky`
+- `snowdreamtech/go:<version>-alpine`
+- `snowdreamtech/go:<version>-debian`
+- `snowdreamtech/go:<version>-rocky`
 
 此格式允许：
 
-- **完整版本固定**：`<version>-debian`（精确版本）
+- **完整版本固定**：`<version>-alpine`, `<version>-debian`, `<version>-rocky`（精确版本）
 - **变体最新标签**：`latest-debian`（跟踪 Debian 最新版本）
 - **全局最新标签**：`latest`（跟踪最新版本，默认指向 Debian）
 
@@ -233,7 +235,7 @@ services:
 
 | 变体       | 架构                                                          |
 | ---------- | ------------------------------------------------------------- |
-| **Debian** | amd64、arm32v7、arm64、ppc64le、riscv64、s390x                |
+| **Debian** | i386、amd64、arm32v7、arm64、ppc64le、riscv64、s390x          |
 | **Alpine** | i386、amd64、arm32v6、arm32v7、arm64、ppc64le、riscv64、s390x |
 | **Rocky**  | amd64、arm64、ppc64le、s390x                                  |
 
@@ -241,7 +243,7 @@ Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 
 ## 入口点系统
 
-基础模板包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
+Go 镜像包含一个灵活的入口点系统，在启动应用程序之前执行自定义初始化脚本。
 
 ### 工作原理
 
@@ -255,7 +257,7 @@ Docker 在拉取镜像时会自动为您的平台选择适当的架构。
 在派生的 Dockerfile 中创建自定义初始化脚本：
 
 ```dockerfile
-FROM snowdreamtech/base:debian
+FROM snowdreamtech/go:debian
 
 # 添加您的自定义初始化脚本
 COPY my-init.sh /usr/local/bin/entrypoint.d/20-my-init.sh
@@ -271,7 +273,7 @@ CMD ["/app/start.sh"]
 启用调试输出以排查入口点执行问题：
 
 ```bash
-docker run -e DEBUG=true snowdreamtech/base:debian
+docker run -e DEBUG=true snowdreamtech/go:debian
 ```
 
 输出示例：
@@ -309,24 +311,24 @@ unirtm run fix
 
 ```bash
 # 构建特定变体
-docker build -t base:debian ./docker/debian/
-docker build -t base:alpine ./docker/alpine/
-docker build -t base:rocky ./docker/rocky/
+docker build -t go:debian ./docker/1.27/debian/
+docker build -t go:alpine ./docker/1.27/alpine/
+docker build -t go:rocky ./docker/1.27/rocky/
 ```
 
 ### 测试
 
 ```bash
 # 测试默认配置
-docker run --rm base:debian id
+docker run --rm go:debian id
 
 # 测试自定义用户创建
-docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t base:debian-test ./docker/debian/
-docker run --rm base:debian-test id
+docker build --build-arg PUID=1000 --build-arg PGID=1000 --build-arg USER=testuser -t go:debian-test ./docker/1.27/debian/
+docker run --rm go:debian-test id
 # 预期输出：uid=1000(testuser) gid=1000(testuser)
 
 # 测试 DEBUG 模式
-docker run --rm -e DEBUG=true base:debian
+docker run --rm -e DEBUG=true go:debian
 ```
 
 ## 参考资料
@@ -338,7 +340,7 @@ docker run --rm -e DEBUG=true base:debian
 5. [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
 6. [docker/buildx](https://github.com/docker/buildx)
 
-## 联系方式（备注：base）
+## 联系方式（备注：go）
 
 - Email: <sn0wdr1am@qq.com>
 - QQ: 3217680847
